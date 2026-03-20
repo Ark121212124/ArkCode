@@ -1,9 +1,8 @@
 {
   "name": "arkcode",
   "version": "1.0.0",
-  "description": "My Render app",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   }
 }
