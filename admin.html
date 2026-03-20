@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Админ панель | ArkadyCode</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/admin.js" defer></script>
+
+</head>
+
+<body>
+
+
+
+<!-- VIDEO BACKGROUND -->
+
+<div class="video-bg">
+
+<video autoplay muted loop playsinline>
+<source src="video/bg.mp4" type="video/mp4">
+</video>
+
+</div>
+
+
+
+<header>
+
+<div class="logo">
+ArkadyCode Admin
+</div>
+
+<nav>
+
+<a href="index.html">Сайт</a>
+<a href="shop.html">Магазин</a>
+<a href="profile.html">Профиль</a>
+
+</nav>
+
+</header>
+
+
+
+<section class="hero reveal">
+
+<h1>Админ панель</h1>
+
+<p>
+Управление магазином и статистикой сайта
+</p>
+
+</section>
+
+
+
+<!-- STATS -->
+
+<section class="container reveal">
+
+<h2>Статистика сайта</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3 id="orders">0</h3>
+
+<p>Покупки</p>
+
+</div>
+
+
+<div class="card">
+
+<h3 id="productsCount">0</h3>
+
+<p>Товары</p>
+
+</div>
+
+
+<div class="card">
+
+<h3 id="usersCount">1</h3>
+
+<p>Пользователи</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>5★</h3>
+
+<p>Рейтинг</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- CHART -->
+
+<section class="container reveal">
+
+<h2>График продаж</h2>
+
+<div class="card">
+
+<canvas id="salesChart"></canvas>
+
+</div>
+
+</section>
+
+
+
+<!-- CATEGORY -->
+
+<section class="container reveal">
+
+<h2>Добавить категорию</h2>
+
+<div class="card">
+
+<input id="catName" placeholder="Название категории">
+
+<button class="btn" onclick="addCategory()">
+Добавить категорию
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ADD PRODUCT -->
+
+<section class="container reveal">
+
+<h2>Добавить товар</h2>
+
+<div class="card">
+
+<input id="name" placeholder="Название товара">
+
+<input id="price" placeholder="Цена">
+
+<input id="image" placeholder="URL картинки">
+
+<textarea id="desc" placeholder="Описание"></textarea>
+
+<select id="category"></select>
+
+<button class="btn" onclick="addProduct()">
+Добавить товар
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- PRODUCT LIST -->
+
+<section class="container reveal">
+
+<h2>Все товары</h2>
+
+<div id="products" class="products"></div>
+
+</section>
+
+
+
+<footer>
+
+ArkadyCode CMS © 2026
+
+</footer>
+
+
+
+<script>
+
+/* SCROLL ANIMATION */
+
+function reveal(){
+
+let reveals=document.querySelectorAll(".reveal")
+
+reveals.forEach(el=>{
+
+let windowHeight=window.innerHeight
+let elementTop=el.getBoundingClientRect().top
+
+if(elementTop < windowHeight-120){
+
+el.classList.add("active")
+
+}
+
+})
+
+}
+
+window.addEventListener("scroll",reveal)
+
+
+
+/* CHART */
+
+const ctx = document.getElementById("salesChart")
+
+new Chart(ctx,{
+
+type:"line",
+
+data:{
+
+labels:["Янв","Фев","Мар","Апр","Май","Июн"],
+
+datasets:[{
+
+label:"Продажи",
+
+data:[3,5,2,8,6,10],
+
+borderColor:"#ff5a3c",
+
+backgroundColor:"rgba(255,90,60,0.2)",
+
+fill:true,
+
+tension:0.4
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+legend:{display:false}
+}
+
+}
+
+})
+
+</script>
+
+
+</body>
+</html>

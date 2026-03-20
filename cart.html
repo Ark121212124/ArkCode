@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина | ArkadyCode</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</head>
+<body class="cart-page">
+
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="video/bg.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="page-overlay"></div>
+
+  <header>
+    <div class="logo">ArkadyCode</div>
+
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="articles.html">Статьи</a>
+      <a id="shopLink" href="login.html?redirect=shop.html">Магазин</a>
+      <a href="portfolio.html">Портфолио</a>
+      <a href="contact.html">Контакты</a>
+      <a id="profileLink" href="login.html?redirect=profile.html">Вход</a>
+      <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main class="cart-main">
+    <section class="cart-hero">
+      <div class="container">
+        <div class="cart-hero-card">
+          <span class="cart-badge">Корзина / Оплата</span>
+          <h1>Оформление заказа</h1>
+          <p>
+            Проверьте состав корзины, заполните данные покупателя и перейдите к оплате по QR-коду.
+            После перевода сохраните заказ — он появится в вашем профиле.
+          </p>
+
+          <div class="cart-hero-actions">
+            <a href="#cartMain" class="btn">Перейти к оформлению</a>
+            <a href="shop.html" class="btn-outline">Вернуться в магазин</a>
+          </div>
+
+          <div class="cart-hero-features">
+            <div class="cart-feature">
+              <span>Безопасно</span>
+              <strong>Оплата по ссылке Сбер</strong>
+            </div>
+            <div class="cart-feature">
+              <span>Быстро</span>
+              <strong>Оформление за 1 минуту</strong>
+            </div>
+            <div class="cart-feature">
+              <span>Удобно</span>
+              <strong>История заказов в профиле</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container cart-section" id="cartMain">
+      <div class="cart-grid">
+
+        <div class="cart-left">
+          <div class="glass-card cart-card">
+            <div class="cart-card-head">
+              <div>
+                <span class="section-kicker">Ваш заказ</span>
+                <h2>Товары в корзине</h2>
+              </div>
+              <div class="cart-mini-total">
+                <span>Позиций</span>
+                <strong id="itemsCountTop">0</strong>
+              </div>
+            </div>
+
+            <div id="cartEmpty" class="cart-empty-state" hidden>
+              <div class="cart-empty-icon">🛒</div>
+              <h3>Корзина пока пуста</h3>
+              <p>Добавьте товары из магазина, чтобы оформить заказ.</p>
+              <a href="shop.html" class="btn">Перейти в магазин</a>
+            </div>
+
+            <div id="cartItems" class="cart-items-list"></div>
+          </div>
+        </div>
+
+        <aside class="cart-right">
+          <div class="glass-card cart-card cart-sticky">
+            <div class="checkout-top">
+              <span class="section-kicker">Оформление</span>
+              <h2>Данные покупателя</h2>
+              <p class="checkout-description">
+                Укажите контактные данные для связи и подтверждения заказа.
+              </p>
+            </div>
+
+            <form id="checkoutForm" class="checkout-form">
+              <div class="checkout-grid">
+                <div class="checkout-group">
+                  <label for="customerName">Имя и фамилия</label>
+                  <input id="customerName" type="text" placeholder="Введите имя и фамилию" required>
+                </div>
+
+                <div class="checkout-group">
+                  <label for="customerEmail">Email</label>
+                  <input id="customerEmail" type="email" placeholder="example@mail.com" required>
+                </div>
+
+                <div class="checkout-group">
+                  <label for="customerPhone">Телефон</label>
+                  <input id="customerPhone" type="text" placeholder="+7 999 000 00 00" required>
+                </div>
+
+                <div class="checkout-group">
+                  <label for="customerCity">Город</label>
+                  <input id="customerCity" type="text" placeholder="Ваш город">
+                </div>
+
+                <div class="checkout-group checkout-full">
+                  <label for="customerComment">Комментарий к заказу</label>
+                  <textarea id="customerComment" placeholder="Например: пожелания по заказу, удобное время для связи..."></textarea>
+                </div>
+              </div>
+            </form>
+
+            <div class="summary-box">
+              <div class="summary-line">
+                <span>Товаров</span>
+                <strong id="itemsCount">0</strong>
+              </div>
+
+              <div class="summary-line">
+                <span>Сумма товаров</span>
+                <strong id="subtotalPrice">0 ₽</strong>
+              </div>
+
+              <div class="summary-line summary-total">
+                <span>Итого к оплате</span>
+                <strong id="totalPrice">0 ₽</strong>
+              </div>
+            </div>
+
+            <div class="payment-box">
+              <div class="payment-box-head">
+                <div>
+                  <span class="section-kicker">QR-оплата</span>
+                  <h3>Оплатите заказ удобным способом</h3>
+                </div>
+              </div>
+
+              <div class="payment-box-content">
+                <div class="payment-qr-wrap">
+                  <img id="paymentQr" class="payment-qr" alt="QR-код для оплаты">
+                </div>
+
+                <div class="payment-info">
+                  <div class="payment-info-item">
+                    <span>Способ оплаты</span>
+                    <strong>Сбер / QR / ссылка</strong>
+                  </div>
+                  <div class="payment-info-item">
+                    <span>Статус</span>
+                    <strong>Ожидает оплаты</strong>
+                  </div>
+                  <div class="payment-info-item">
+                    <span>Важно</span>
+                    <strong>После перевода нажмите «Я оплатил»</strong>
+                  </div>
+                </div>
+              </div>
+
+              <p class="payment-note">
+                Отсканируйте QR-код через банковское приложение или откройте страницу оплаты по кнопке ниже.
+              </p>
+
+              <div class="qr-actions">
+                <a id="openPaymentLink" href="#" target="_blank" class="btn">Оплатить по QR</a>
+                <button id="markPaidBtn" type="button" class="btn-outline">Я оплатил</button>
+              </div>
+            </div>
+
+            <div id="cartStatus" class="auth-status" hidden></div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    ArkadyCode © 2026<br>
+    Корзина и оформление заказа
+  </footer>
+
+  <script>
+    function cartTotal(items){
+      return items.reduce((sum, item) => sum + (Number(item.price) * Number(item.quantity)), 0);
+    }
+
+    function renderCart(){
+      const items = getCart();
+      const cartItemsNode = document.getElementById("cartItems");
+      const cartEmptyNode = document.getElementById("cartEmpty");
+      const itemsCountNode = document.getElementById("itemsCount");
+      const itemsCountTopNode = document.getElementById("itemsCountTop");
+      const subtotalPriceNode = document.getElementById("subtotalPrice");
+      const totalPriceNode = document.getElementById("totalPrice");
+
+      if(!items.length){
+        cartItemsNode.innerHTML = "";
+        cartEmptyNode.hidden = false;
+      }else{
+        cartEmptyNode.hidden = true;
+        cartItemsNode.innerHTML = items.map(item => `
+          <div class="cart-item-card">
+            <div class="cart-item-media">
+              ${item.image ? `<img src="${item.image}" alt="${item.name}">` : `<div class="cart-no-image">Нет фото</div>`}
+            </div>
+
+            <div class="cart-item-content">
+              <h3>${item.name}</h3>
+              <div class="cart-item-meta">Цена за единицу: ${formatPrice(item.price)}</div>
+              <div class="cart-item-price">${formatPrice(item.price * item.quantity)}</div>
+            </div>
+
+            <div class="cart-item-actions">
+              <div class="qty-box">
+                <button type="button" class="qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
+                <span class="qty-value">${item.quantity}</span>
+                <button type="button" class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+              </div>
+
+              <button type="button" class="remove-btn" onclick="removeItem('${item.id}')">Удалить</button>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+      const total = cartTotal(items);
+
+      itemsCountNode.textContent = String(totalItems);
+      itemsCountTopNode.textContent = String(totalItems);
+      subtotalPriceNode.textContent = formatPrice(total);
+      totalPriceNode.textContent = formatPrice(total);
+
+      updateCartCount();
+    }
+
+    function changeQty(id, delta){
+      const items = getCart().map(item => {
+        if(String(item.id) === String(id)){
+          return {
+            ...item,
+            quantity: Math.max(1, item.quantity + delta)
+          };
+        }
+        return item;
+      });
+
+      setCart(items);
+      renderCart();
+    }
+
+    function removeItem(id){
+      const items = getCart().filter(item => String(item.id) !== String(id));
+      setCart(items);
+      renderCart();
+    }
+
+    function showCartStatus(type, text){
+      const statusNode = document.getElementById("cartStatus");
+      statusNode.hidden = false;
+      statusNode.className = "auth-status " + type;
+      statusNode.innerHTML = text;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = requireAuth("cart.html");
+      if(!user){
+        return;
+      }
+
+      document.getElementById("customerName").value = user.name || "";
+      document.getElementById("customerEmail").value = user.email || "";
+      document.getElementById("customerPhone").value = user.phone || "";
+      document.getElementById("customerCity").value = user.city || "Саранск";
+
+      const qrNode = document.getElementById("paymentQr");
+      qrNode.src = "https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=" + encodeURIComponent(window.APP_PAYMENT_LINK);
+
+      const openPaymentLink = document.getElementById("openPaymentLink");
+      openPaymentLink.href = window.APP_PAYMENT_LINK;
+
+      document.getElementById("markPaidBtn").addEventListener("click", () => {
+        const items = getCart();
+
+        if(!items.length){
+          showCartStatus("error", "Корзина пуста. Сначала добавьте товар в магазин.");
+          return;
+        }
+
+        const name = document.getElementById("customerName").value.trim();
+        const email = document.getElementById("customerEmail").value.trim();
+        const phone = document.getElementById("customerPhone").value.trim();
+        const city = document.getElementById("customerCity").value.trim();
+        const comment = document.getElementById("customerComment").value.trim();
+
+        if(!name || !email || !phone){
+          showCartStatus("error", "Заполните имя, email и телефон, чтобы оформить заказ.");
+          return;
+        }
+
+        const currentUser = getCurrentUser();
+        const updatedUser = {
+          ...currentUser,
+          name,
+          email,
+          phone,
+          city
+        };
+
+        const updateResult = upsertUser(updatedUser);
+
+        if(!updateResult.ok){
+          showCartStatus("error", updateResult.message);
+          return;
+        }
+
+        const total = cartTotal(items);
+
+        createOrder({
+          userId: updateResult.user.id,
+          customerName: name,
+          customerEmail: email,
+          customerPhone: phone,
+          customerCity: city,
+          comment,
+          items,
+          total,
+          paymentMethod: "QR / Sber",
+          paymentLink: window.APP_PAYMENT_LINK,
+          status: "Оплачено пользователем, ожидает подтверждения"
+        });
+
+        setCart([]);
+        renderCart();
+
+        showCartStatus(
+          "success",
+          'Заказ сохранен. Перейдите в <a href="profile.html">профиль</a>, чтобы посмотреть историю заказов.'
+        );
+      });
+
+      renderCart();
+    });
+  </script>
+</body>
+</html>

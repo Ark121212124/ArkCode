@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ArkadyCode Store</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="js/products.js"></script>
+<script src="js/auth.js" defer></script>
+<script src="js/cart.js" defer></script>
+
+</head>
+
+<body>
+
+
+<!-- VIDEO BACKGROUND -->
+
+<div class="video-bg">
+
+<video autoplay muted loop playsinline>
+<source src="video/bg.mp4" type="video/mp4">
+</video>
+
+</div>
+
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+ArkadyCode
+</div>
+
+<nav>
+
+<a href="index.html">Главная</a>
+<a href="articles.html">Статьи</a>
+<a id="shopLink" class="js-shop-link" href="shop.html">Магазин</a>
+<a href="portfolio.html">Портфолио</a>
+<a href="contact.html">Контакты</a>
+<a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Вход</a>
+
+<a class="cart-icon js-cart-link" href="#" onclick="openCart(); return false;">
+🛒 <span id="cart-count">0</span>
+</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- HERO -->
+
+<section class="hero reveal">
+
+<h1>ArkadyCode Store</h1>
+
+<p>
+Магазин комплектующих для ПК  
+и товаров для разработчиков
+</p>
+
+<div class="hero-buttons">
+
+<a href="#catalog" class="btn">
+Смотреть товары
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- CATALOG -->
+
+<section class="container reveal" id="catalog">
+
+<h2>Каталог товаров</h2>
+
+
+<input
+type="text"
+id="search"
+placeholder="Поиск товаров..."
+onkeyup="searchProducts()"
+class="search"
+>
+
+
+<div class="categories">
+
+<button onclick="filterCategory('all')">Все</button>
+
+<button onclick="filterCategory('cpu')">
+Процессоры
+</button>
+
+<button onclick="filterCategory('gpu')">
+Видеокарты
+</button>
+
+<button onclick="filterCategory('memory')">
+Оперативная память
+</button>
+
+</div>
+
+
+
+<div class="products" id="product-list"></div>
+
+</section>
+
+
+
+<!-- WHY STORE -->
+
+<section class="container reveal">
+
+<h2>Почему ArkadyCode Store</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Быстрая доставка</h3>
+
+<p>
+Отправка товаров по всему миру.
+Быстрая обработка заказов.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Гарантия качества</h3>
+
+<p>
+Только проверенные комплектующие
+от известных производителей.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Поддержка 24/7</h3>
+
+<p>
+Помощь в выборе комплектующих
+и сборке компьютера.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- CART PANEL -->
+
+<div id="cart-panel">
+
+<h2>Корзина</h2>
+
+<ul id="cart"></ul>
+
+<p class="total">
+Итого: $<span id="total">0</span>
+</p>
+
+<a href="cart.html" class="panel-checkout-link">
+<button class="btn">
+Оформить заказ
+</button>
+</a>
+
+<button onclick="closeCart()" class="btn-outline">
+Закрыть
+</button>
+
+</div>
+
+
+
+<footer>
+
+ArkadyCode © 2026  
+Интернет-магазин комплектующих
+
+</footer>
+
+
+
+<script>
+function reveal(){
+  const reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach(element => {
+    const windowHeight = window.innerHeight;
+    const elementTop = element.getBoundingClientRect().top;
+
+    if(elementTop < windowHeight - 120){
+      element.classList.add("active");
+    }
+  });
+}
+
+function addToCartById(id){
+  const product = Array.isArray(window.products)
+    ? window.products.find(item => String(item.id) === String(id))
+    : null;
+
+  if(product){
+    addToCart(product);
+  }
+}
+
+function renderProducts(list){
+  const container = document.getElementById("product-list");
+
+  if(!container){
+    return;
+  }
+
+  container.innerHTML = list.map(product => `
+    <div class="product" data-category="${product.category}">
+      <a href="product.html?id=${product.id}">
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+      </a>
+
+      <div class="rating">⭐ ⭐ ⭐ ⭐ ⭐</div>
+      <p class="price">${formatPrice(product.price)}</p>
+      <button type="button" onclick="addToCartById('${product.id}')">В корзину</button>
+    </div>
+  `).join("");
+}
+
+function searchProducts(){
+  const value = document.getElementById("search").value.toLowerCase();
+  const filtered = products.filter(product => product.name.toLowerCase().includes(value));
+  renderProducts(filtered);
+}
+
+function filterCategory(category){
+  if(category === "all"){
+    renderProducts(products);
+    return;
+  }
+
+  const filtered = products.filter(product => product.category === category);
+  renderProducts(filtered);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const pageTarget = `shop.html${window.location.search}`;
+  const user = requireAuth(pageTarget);
+
+  if(!user){
+    return;
+  }
+
+  renderProducts(products);
+  reveal();
+  openCart();
+});
+
+window.addEventListener("scroll", reveal);
+</script>
+
+</body>
+</html>

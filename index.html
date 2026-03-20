@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ArkadyCode</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="js/auth.js" defer></script>
+<script src="js/cart.js" defer></script>
+
+</head>
+
+<body data-redirect-to-shop-on-add="true">
+
+
+<!-- VIDEO BACKGROUND -->
+
+<div class="video-bg">
+<video autoplay muted loop playsinline>
+<source src="video/bg.mp4" type="video/mp4">
+</video>
+</div>
+
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+ArkadyCode
+</div>
+
+<nav>
+
+<a href="index.html">Главная</a>
+<a href="articles.html">Статьи</a>
+<a id="shopLink" class="js-shop-link" href="login.html?redirect=shop.html">Магазин</a>
+<a href="portfolio.html">Портфолио</a>
+<a href="contact.html">Контакты</a>
+<a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Вход</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- HERO -->
+
+<section class="hero reveal">
+
+<h1>ArkadyCode</h1>
+
+<p>
+Разработка современных сайтов и интернет-магазинов
+</p>
+
+<div class="hero-buttons">
+
+<a href="login.html?redirect=shop.html" class="btn js-shop-link">
+Перейти в магазин
+</a>
+
+<a href="portfolio.html" class="btn-outline">
+Мои проекты
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+
+<section class="container reveal">
+
+<h2>О разработчике</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/919/919827.png">
+
+<h3>Frontend разработка</h3>
+
+<p>
+Создание современных сайтов и веб-приложений
+</p>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png">
+
+<h3>Интернет-магазины</h3>
+
+<p>
+Магазины с корзиной и системой оплаты
+</p>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+
+<h3>UI / UX дизайн</h3>
+
+<p>
+Интерфейсы уровня Apple
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PRODUCTS -->
+
+<section class="container reveal">
+
+<h2>Популярные товары</h2>
+
+<div class="products">
+
+<div class="product">
+
+<img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7">
+
+<h3>Intel Core i7-13700K</h3>
+
+<p class="price">399 $</p>
+
+<button onclick='addToCart({id:"1",name:"Intel Core i7-13700K",price:399,image:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7"})'>
+В корзину
+</button>
+
+</div>
+
+
+<div class="product">
+
+<img src="https://images.unsplash.com/photo-1591488320449-011701bb6704">
+
+<h3>NVIDIA RTX 4070</h3>
+
+<p class="price">699 $</p>
+
+<button onclick='addToCart({id:"3",name:"NVIDIA RTX 4070",price:699,image:"https://images.unsplash.com/photo-1591488320449-011701bb6704"})'>
+В корзину
+</button>
+
+</div>
+
+
+<div class="product">
+
+<img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f">
+
+<h3>Kingston Fury 16GB DDR4</h3>
+
+<p class="price">79 $</p>
+
+<button onclick='addToCart({id:"6",name:"Kingston Fury 16GB DDR4",price:79,image:"https://images.unsplash.com/photo-1518779578993-ec3579fee39f"})'>
+В корзину
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- STATS -->
+
+<section class="container reveal">
+
+<h2>Статистика сайта</h2>
+
+<div class="stats">
+
+<div class="chart-card">
+<canvas id="chartProducts"></canvas>
+<p>Товаров</p>
+</div>
+
+<div class="chart-card">
+<canvas id="chartUsers"></canvas>
+<p>Пользователей</p>
+</div>
+
+<div class="chart-card">
+<canvas id="chartProjects"></canvas>
+<p>Проектов</p>
+</div>
+
+<div class="chart-card">
+<canvas id="chartRating"></canvas>
+<p>Рейтинг</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- CONTACT -->
+
+<section class="container reveal">
+
+<h2>Связаться со мной</h2>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+<h3>Email</h3>
+<a href="mailto:Arktiko12@gmail.com">Arktiko12@gmail.com</a>
+</div>
+
+<div class="contact-card">
+<h3>GitHub</h3>
+<a href="https://github.com/ArkBat" target="_blank">github.com/ArkBat</a>
+</div>
+
+<div class="contact-card">
+<h3>Telegram</h3>
+<a href="https://t.me/ArkBat10" target="_blank">@ArkBat10</a>
+</div>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+ArkadyCode © 2026
+
+</footer>
+
+
+
+<script src="js/charts.js"></script>
+
+
+<script>
+
+/* SCROLL ANIMATION */
+
+function reveal(){
+
+let reveals=document.querySelectorAll(".reveal")
+
+reveals.forEach(el=>{
+
+let windowHeight=window.innerHeight
+let elementTop=el.getBoundingClientRect().top
+
+if(elementTop < windowHeight-120){
+
+el.classList.add("active")
+
+}
+
+})
+
+}
+
+window.addEventListener("scroll",reveal)
+
+</script>
+
+
+</body>
+</html>

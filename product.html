@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Товар | ArkadyCode</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/products.js"></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</head>
+<body>
+
+  <!-- VIDEO BACKGROUND -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="video/bg.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <header>
+    <div class="logo">ArkadyCode</div>
+
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="articles.html">Статьи</a>
+      <a id="shopLink" class="js-shop-link" href="shop.html">Магазин</a>
+      <a href="portfolio.html">Портфолио</a>
+      <a href="contact.html">Контакты</a>
+      <a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Вход</a>
+
+      <a class="cart-icon" onclick="openCart()">
+        🛒 <span id="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <section class="container product-container">
+    <div class="product-shell" id="productShell">
+
+      <div class="breadcrumbs">
+        <a id="shopLink" class="js-shop-link" href="shop.html">Магазин</a>
+        <span>•</span>
+        <span id="crumbTitle">Карточка товара</span>
+      </div>
+
+      <div class="product-layout">
+        <!-- ЛЕВАЯ ЧАСТЬ -->
+        <div class="product-gallery-card">
+          <div class="main-img-wrap">
+            <img id="main-img" class="main-img" alt="Фото товара">
+          </div>
+
+          <div class="thumbs" id="thumbs"></div>
+        </div>
+
+        <!-- ПРАВАЯ ЧАСТЬ -->
+        <div class="product-side-card">
+          <div class="product-topline">
+            <div class="badge-group" id="badgeRow"></div>
+            <div class="product-code" id="productCode"></div>
+          </div>
+
+          <h1 id="title" class="product-title"></h1>
+
+          <div class="rating-row">
+            <div id="rating" class="rating"></div>
+            <span id="ratingText" class="rating-caption"></span>
+          </div>
+
+          <p id="description" class="product-summary"></p>
+
+          <div class="purchase-box">
+            <div class="purchase-price">
+              <span class="price-label">Цена</span>
+              <p class="price current-price" id="price"></p>
+              <span class="price-subtitle">Актуальная цена на сайте</span>
+            </div>
+
+            <button id="buyBtn" class="btn buy-main-btn" type="button">
+              Добавить в корзину
+            </button>
+          </div>
+
+          <div class="product-benefits">
+            <div class="benefit-card">
+              <span class="benefit-icon">⚡</span>
+              <p>Быстрое оформление</p>
+            </div>
+
+            <div class="benefit-card">
+              <span class="benefit-icon">🛡️</span>
+              <p>Проверенное качество</p>
+            </div>
+
+            <div class="benefit-card">
+              <span class="benefit-icon">🚚</span>
+              <p>Удобная доставка</p>
+            </div>
+          </div>
+
+          <h3 class="section-title">Характеристики</h3>
+          <div id="specsGrid" class="specs-grid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ОТЗЫВЫ -->
+  <section class="container">
+    <div class="product-section-box">
+      <h2 class="section-heading">Отзывы покупателей</h2>
+
+      <ul id="reviewsList" class="reviews-list"></ul>
+
+      <div class="review-form">
+        <input id="reviewInput" placeholder="Поделитесь впечатлением о товаре...">
+        <button onclick="addReview()" class="btn" type="button">
+          Добавить отзыв
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- РЕКОМЕНДУЕМ -->
+  <section class="container">
+    <div class="product-section-box related-section">
+      <h2 class="section-heading">Рекомендуемые товары</h2>
+      <div class="products products-related" id="related"></div>
+    </div>
+  </section>
+
+  <footer>
+    ArkadyCode © 2026
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"));
+    const product = products.find(p => p.id === id);
+
+    const currencySymbol = "₽"; // если нужны доллары, поменяй на "$"
+
+    function escapeHtml(str = "") {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function formatPrice(value) {
+      const num = Number(value) || 0;
+      return `${num.toLocaleString("ru-RU")} ${currencySymbol}`;
+    }
+
+    function parseSpec(spec, index) {
+      if (typeof spec === "string" && spec.includes(":")) {
+        const parts = spec.split(":");
+        const label = parts.shift().trim();
+        const value = parts.join(":").trim();
+
+        return {
+          label: label || `Параметр ${index + 1}`,
+          value: value || "—"
+        };
+      }
+
+      return {
+        label: `Параметр ${index + 1}`,
+        value: String(spec || "—")
+      };
+    }
+
+    function renderStars(value) {
+      const rounded = Math.round(Number(value) || 0);
+      let html = "";
+
+      for (let i = 1; i <= 5; i++) {
+        html += `<span class="star ${i <= rounded ? "filled" : ""}">★</span>`;
+      }
+
+      return html;
+    }
+
+    function setMainImage(src, clickedThumb = null) {
+      const mainImg = document.getElementById("main-img");
+      mainImg.src = src;
+      mainImg.alt = product.name;
+
+      document.querySelectorAll(".thumb").forEach(thumb => {
+        thumb.classList.remove("active");
+      });
+
+      if (clickedThumb) {
+        clickedThumb.classList.add("active");
+      }
+    }
+
+    if (!product) {
+      document.getElementById("productShell").innerHTML = `
+        <div class="product-empty">
+          <h2>Товар не найден</h2>
+          <p>Похоже, такой карточки больше нет или ссылка неверная.</p>
+          <a href="shop.html" class="btn">Вернуться в магазин</a>
+        </div>
+      `;
+    } else {
+      document.title = `${product.name} | ArkadyCode`;
+      document.getElementById("crumbTitle").textContent = product.name;
+      document.getElementById("title").textContent = product.name;
+      document.getElementById("description").textContent = product.description || "Описание скоро появится.";
+      document.getElementById("price").textContent = formatPrice(product.price);
+      document.getElementById("productCode").textContent = `Артикул #${String(product.id).padStart(4, "0")}`;
+
+      const ratingValue = Number(product.rating) || 0;
+      document.getElementById("rating").innerHTML = renderStars(ratingValue);
+      document.getElementById("ratingText").textContent = `${ratingValue.toFixed(1)} / 5`;
+
+      const badgeRow = document.getElementById("badgeRow");
+      badgeRow.innerHTML = `
+        <span class="product-badge badge-hot">${ratingValue >= 4.5 ? "Хит продаж" : "Новинка"}</span>
+        <span class="product-badge badge-stock">В наличии</span>
+      `;
+
+      const images = Array.isArray(product.images) && product.images.length
+        ? product.images
+        : (product.image ? [product.image] : []);
+
+      if (images.length) {
+        setMainImage(images[0]);
+
+        const thumbs = document.getElementById("thumbs");
+        thumbs.innerHTML = images.map((img, index) => `
+          <button
+            class="thumb ${index === 0 ? "active" : ""}"
+            type="button"
+            data-img="${escapeHtml(img)}"
+            aria-label="Фото ${index + 1}"
+          >
+            <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)} ${index + 1}">
+          </button>
+        `).join("");
+
+        document.querySelectorAll(".thumb").forEach(thumb => {
+          thumb.addEventListener("click", () => {
+            setMainImage(thumb.dataset.img, thumb);
+          });
+        });
+      }
+
+      const specsGrid = document.getElementById("specsGrid");
+      const specs = Array.isArray(product.specs) ? product.specs : [];
+
+      specsGrid.innerHTML = specs.map((item, index) => {
+        const spec = parseSpec(item, index);
+
+        return `
+          <div class="spec-card">
+            <span class="spec-label">${escapeHtml(spec.label)}</span>
+            <span class="spec-value">${escapeHtml(spec.value)}</span>
+          </div>
+        `;
+      }).join("");
+
+      document.getElementById("buyBtn").onclick = () => {
+        addToCart(product);
+      };
+
+      const related = document.getElementById("related");
+      const relatedProducts = products.filter(p => p.id !== product.id).slice(0, 4);
+
+      related.innerHTML = relatedProducts.map(p => {
+        const img = (Array.isArray(p.images) && p.images.length) ? p.images[0] : (p.image || "");
+        return `
+          <div class="product">
+            <a href="product.html?id=${p.id}">
+              <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name)}">
+              <h3>${escapeHtml(p.name)}</h3>
+            </a>
+            <p class="price">${formatPrice(p.price)}</p>
+            <button
+              type="button"
+              class="related-buy-btn"
+              data-name="${escapeHtml(p.name)}"
+              data-price="${Number(p.price) || 0}"
+            >
+              В корзину
+            </button>
+          </div>
+        `;
+      }).join("");
+
+      document.querySelectorAll(".related-buy-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          addToCart(btn.dataset.name, Number(btn.dataset.price));
+        });
+      });
+
+      displayReviews();
+    }
+  </script>
+</body>
+</html>

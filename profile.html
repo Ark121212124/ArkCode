@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль | ArkadyCode</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</head>
+<body>
+
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="video/bg.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <header>
+    <div class="logo">ArkadyCode</div>
+
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="articles.html">Статьи</a>
+      <a id="shopLink" href="login.html?redirect=shop.html">Магазин</a>
+      <a href="portfolio.html">Портфолио</a>
+      <a href="contact.html">Контакты</a>
+      <a id="profileLink" href="profile.html">Профиль</a>
+      <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <section class="hero profile-page-hero">
+    <div class="profile-page-shell">
+      <span class="page-badge">Личный кабинет</span>
+      <h1 class="page-hero-title">Профиль покупателя</h1>
+      <p class="page-hero-text">
+        Здесь хранятся ваши контактные данные, быстрые ссылки и история заказов.
+      </p>
+      <div class="hero-buttons">
+        <a href="#profileMain" class="btn">Открыть профиль</a>
+        <a href="shop.html" class="btn-outline">Перейти в магазин</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="profileMain">
+    <div class="profile-layout">
+
+      <aside class="profile-sidebar-card">
+        <div id="profileAvatar" class="profile-avatar">A</div>
+        <div id="profileName" class="profile-name">Пользователь</div>
+        <div class="profile-subtitle">Личный кабинет покупателя ArkadyCode</div>
+
+        <div class="profile-data-list">
+          <div class="profile-data-item">
+            <strong>Email</strong>
+            <span id="profileEmail">—</span>
+          </div>
+
+          <div class="profile-data-item">
+            <strong>Телефон</strong>
+            <span id="profilePhone">—</span>
+          </div>
+
+          <div class="profile-data-item">
+            <strong>Telegram</strong>
+            <span id="profileTelegram">—</span>
+          </div>
+
+          <div class="profile-data-item">
+            <strong>Город</strong>
+            <span id="profileCity">—</span>
+          </div>
+        </div>
+
+        <div class="profile-quick-links">
+          <a href="shop.html" class="btn">Перейти в магазин</a>
+          <a href="cart.html" class="btn-outline">Открыть корзину</a>
+          <button type="button" id="logoutBtn" class="btn-outline">Выйти из аккаунта</button>
+        </div>
+      </aside>
+
+      <div class="profile-main-stack">
+
+        <div class="profile-edit-card">
+          <span class="section-kicker">Данные профиля</span>
+          <h2 class="section-title-left">Редактировать информацию</h2>
+
+          <form id="profileForm" class="profile-form">
+            <div class="profile-form-grid">
+              <div class="profile-field">
+                <label for="editName">Имя и фамилия</label>
+                <input id="editName" type="text" required>
+              </div>
+
+              <div class="profile-field">
+                <label for="editEmail">Email</label>
+                <input id="editEmail" type="email" required>
+              </div>
+
+              <div class="profile-field">
+                <label for="editPhone">Телефон</label>
+                <input id="editPhone" type="text">
+              </div>
+
+              <div class="profile-field">
+                <label for="editTelegram">Telegram</label>
+                <input id="editTelegram" type="text">
+              </div>
+
+              <div class="profile-field">
+                <label for="editCity">Город</label>
+                <input id="editCity" type="text">
+              </div>
+
+              <div class="profile-field">
+                <label for="editPassword">Пароль</label>
+                <input id="editPassword" type="password">
+              </div>
+            </div>
+
+            <button type="submit" class="btn">Сохранить изменения</button>
+            <div id="profileStatus" class="auth-status" hidden></div>
+          </form>
+        </div>
+
+        <div class="profile-orders-card">
+          <span class="section-kicker">История заказов</span>
+          <h2 class="section-title-left">Ваши покупки</h2>
+
+          <div id="ordersList" class="orders-list"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    ArkadyCode © 2026<br>
+    Профиль покупателя
+  </footer>
+
+  <script>
+    function initialsFromName(name){
+      const words = String(name || "").trim().split(/\s+/).filter(Boolean);
+      if(!words.length){
+        return "A";
+      }
+      return words.slice(0, 2).map(word => word[0].toUpperCase()).join("");
+    }
+
+    function renderProfile(user){
+      document.getElementById("profileAvatar").textContent = initialsFromName(user.name);
+      document.getElementById("profileName").textContent = user.name || "Пользователь";
+      document.getElementById("profileEmail").textContent = user.email || "—";
+      document.getElementById("profilePhone").textContent = user.phone || "—";
+      document.getElementById("profileTelegram").textContent = user.telegram || "—";
+      document.getElementById("profileCity").textContent = user.city || "—";
+
+      document.getElementById("editName").value = user.name || "";
+      document.getElementById("editEmail").value = user.email || "";
+      document.getElementById("editPhone").value = user.phone || "";
+      document.getElementById("editTelegram").value = user.telegram || "";
+      document.getElementById("editCity").value = user.city || "Саранск";
+      document.getElementById("editPassword").value = user.password || "";
+    }
+
+    function renderOrders(user){
+      const orders = getMyOrders(user.id);
+      const ordersNode = document.getElementById("ordersList");
+
+      if(!orders.length){
+        ordersNode.innerHTML = `
+          <div class="empty-orders">
+            У вас пока нет оформленных заказов. Перейдите в магазин и добавьте товары в корзину.
+          </div>
+        `;
+        return;
+      }
+
+      ordersNode.innerHTML = orders.map(order => `
+        <div class="order-card">
+          <div class="order-header">
+            <div>
+              <div class="order-title">${order.id}</div>
+              <div class="order-meta">
+                Дата: ${order.createdAt}<br>
+                Способ оплаты: ${order.paymentMethod || "—"}
+              </div>
+            </div>
+
+            <div class="order-status ${String(order.status || "").toLowerCase().includes("оплач") ? "status-paid" : "status-pending"}">
+              ${order.status || "Создан"}
+            </div>
+          </div>
+
+          <div class="order-items">
+            ${Array.isArray(order.items) ? order.items.map(item => `
+              <div class="order-item-row">
+                <span>${item.name} × ${item.quantity}</span>
+                <strong>${formatPrice(item.price * item.quantity)}</strong>
+              </div>
+            `).join("") : ""}
+          </div>
+
+          <div class="order-total">Итого: ${formatPrice(order.total)}</div>
+        </div>
+      `).join("");
+    }
+
+    function showProfileStatus(type, text){
+      const statusNode = document.getElementById("profileStatus");
+      statusNode.hidden = false;
+      statusNode.className = "auth-status " + type;
+      statusNode.textContent = text;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = requireAuth("profile.html");
+      if(!user){
+        return;
+      }
+
+      renderProfile(user);
+      renderOrders(user);
+
+      document.getElementById("profileForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const currentUser = getCurrentUser();
+        const updatedUser = {
+          ...currentUser,
+          name: document.getElementById("editName").value.trim(),
+          email: document.getElementById("editEmail").value.trim().toLowerCase(),
+          phone: document.getElementById("editPhone").value.trim(),
+          telegram: document.getElementById("editTelegram").value.trim(),
+          city: document.getElementById("editCity").value.trim(),
+          password: document.getElementById("editPassword").value
+        };
+
+        const result = upsertUser(updatedUser);
+
+        if(!result.ok){
+          showProfileStatus("error", result.message);
+          return;
+        }
+
+        renderProfile(result.user);
+        showProfileStatus("success", result.message);
+      });
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        logoutUser();
+      });
+    });
+  </script>
+</body>
+</html>

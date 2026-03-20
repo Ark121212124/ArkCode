@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход | ArkadyCode</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</head>
+<body>
+
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="video/bg.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <header>
+    <div class="logo">ArkadyCode</div>
+
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="articles.html">Статьи</a>
+      <a id="shopLink" href="login.html?redirect=shop.html">Магазин</a>
+      <a href="portfolio.html">Портфолио</a>
+      <a href="contact.html">Контакты</a>
+      <a id="profileLink" href="login.html?redirect=profile.html">Вход</a>
+      <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <section class="hero auth-page-hero">
+    <div class="auth-page-shell">
+      <span class="page-badge">Вход в магазин</span>
+      <h1 class="page-hero-title">Авторизация и оформление покупок</h1>
+      <p class="page-hero-text">
+        Чтобы оформлять заказы, сохранять профиль и видеть историю покупок,
+        войдите в аккаунт или создайте новый.
+      </p>
+      <div class="hero-buttons">
+        <a href="#authPanel" class="btn">Начать</a>
+        <a href="index.html" class="btn-outline">Вернуться на главную</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="authPanel">
+    <div class="auth-layout">
+
+      <div class="auth-info-card">
+        <span class="section-kicker">Зачем входить</span>
+        <h2 class="section-title-left">Личный кабинет для покупателя</h2>
+
+        <p class="section-text">
+          После входа вы сможете оформлять заказы, сохранять контактные данные,
+          быстро переходить к оплате и просматривать историю покупок на странице профиля.
+        </p>
+
+        <div class="auth-benefits">
+          <div class="auth-benefit">
+            <div class="auth-benefit-icon">🛒</div>
+            <div>
+              <h3>Оформление заказа</h3>
+              <p>Покупатель входит в аккаунт и оформляет заказ с сохранением данных.</p>
+            </div>
+          </div>
+
+          <div class="auth-benefit">
+            <div class="auth-benefit-icon">👤</div>
+            <div>
+              <h3>Страница профиля</h3>
+              <p>Все контакты, заказы и быстрые действия собраны в одном месте.</p>
+            </div>
+          </div>
+
+          <div class="auth-benefit">
+            <div class="auth-benefit-icon">📱</div>
+            <div>
+              <h3>Оплата по QR</h3>
+              <p>После входа можно перейти в корзину и оплатить заказ через QR-код.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-note" style="margin-top:22px;">
+          Это фронтенд-версия авторизации без сервера: данные сохраняются локально в браузере.
+          Для безопасной боевой авторизации нужен backend или сервис вроде Firebase / Supabase.
+        </div>
+      </div>
+
+      <div class="auth-panel-card">
+        <div class="auth-switch">
+          <button type="button" class="auth-tab-btn active" data-tab="login">Вход</button>
+          <button type="button" class="auth-tab-btn" data-tab="register">Регистрация</button>
+        </div>
+
+        <div id="authStatus" class="auth-status" hidden></div>
+
+        <div id="loginPanel" class="auth-panel active">
+          <form id="loginForm" class="auth-form">
+            <div class="auth-form-grid">
+              <div class="auth-field auth-full">
+                <label for="loginEmail">Email</label>
+                <input id="loginEmail" type="email" placeholder="Введите email" required>
+              </div>
+
+              <div class="auth-field auth-full">
+                <label for="loginPassword">Пароль</label>
+                <input id="loginPassword" type="password" placeholder="Введите пароль" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn">Войти в аккаунт</button>
+          </form>
+        </div>
+
+        <div id="registerPanel" class="auth-panel">
+          <form id="registerForm" class="auth-form">
+            <div class="auth-form-grid">
+              <div class="auth-field auth-full">
+                <label for="registerName">Имя и фамилия</label>
+                <input id="registerName" type="text" placeholder="Введите имя" required>
+              </div>
+
+              <div class="auth-field">
+                <label for="registerEmail">Email</label>
+                <input id="registerEmail" type="email" placeholder="example@mail.com" required>
+              </div>
+
+              <div class="auth-field">
+                <label for="registerPhone">Телефон</label>
+                <input id="registerPhone" type="text" placeholder="+7 999 000 00 00">
+              </div>
+
+              <div class="auth-field">
+                <label for="registerTelegram">Telegram</label>
+                <input id="registerTelegram" type="text" placeholder="@username">
+              </div>
+
+              <div class="auth-field">
+                <label for="registerCity">Город</label>
+                <input id="registerCity" type="text" value="Саранск">
+              </div>
+
+              <div class="auth-field auth-full">
+                <label for="registerPassword">Пароль</label>
+                <input id="registerPassword" type="password" placeholder="Придумайте пароль" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn">Создать аккаунт</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    ArkadyCode © 2026<br>
+    Вход и регистрация
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = getCurrentUser();
+
+      if(user){
+        window.location.href = getRedirectFromQuery();
+        return;
+      }
+
+      const authStatus = document.getElementById("authStatus");
+      const tabButtons = document.querySelectorAll(".auth-tab-btn");
+      const panels = {
+        login: document.getElementById("loginPanel"),
+        register: document.getElementById("registerPanel")
+      };
+
+      function showStatus(type, text){
+        authStatus.hidden = false;
+        authStatus.className = "auth-status " + type;
+        authStatus.textContent = text;
+      }
+
+      function switchTab(tab){
+        tabButtons.forEach(button => {
+          button.classList.toggle("active", button.dataset.tab === tab);
+        });
+
+        Object.keys(panels).forEach(key => {
+          panels[key].classList.toggle("active", key === tab);
+        });
+
+        authStatus.hidden = true;
+      }
+
+      tabButtons.forEach(button => {
+        button.addEventListener("click", () => switchTab(button.dataset.tab));
+      });
+
+      switchTab(getAuthModeFromQuery() === "register" ? "register" : "login");
+
+      document.getElementById("loginForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const result = loginUser(
+          document.getElementById("loginEmail").value,
+          document.getElementById("loginPassword").value
+        );
+
+        if(!result.ok){
+          showStatus("error", result.message);
+          return;
+        }
+
+        showStatus("success", "Вход выполнен. Перенаправляю...");
+        setTimeout(() => {
+          window.location.href = getRedirectFromQuery();
+        }, 700);
+      });
+
+      document.getElementById("registerForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const result = registerUser({
+          name: document.getElementById("registerName").value,
+          email: document.getElementById("registerEmail").value,
+          phone: document.getElementById("registerPhone").value,
+          telegram: document.getElementById("registerTelegram").value,
+          city: document.getElementById("registerCity").value,
+          password: document.getElementById("registerPassword").value
+        });
+
+        if(!result.ok){
+          showStatus("error", result.message);
+          return;
+        }
+
+        showStatus("success", "Аккаунт создан. Перенаправляю...");
+        setTimeout(() => {
+          window.location.href = getRedirectFromQuery();
+        }, 700);
+      });
+    });
+  </script>
+</body>
+</html>

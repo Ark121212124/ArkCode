@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты | ArkadyCode</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/cart.js" defer></script>
+</head>
+<body>
+
+  <!-- VIDEO BACKGROUND -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="video/bg.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">ArkadyCode</div>
+
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="articles.html">Статьи</a>
+      <a href="shop.html">Магазин</a>
+      <a href="portfolio.html">Портфолио</a>
+      <a href="contact.html">Контакты</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero contact-page-hero reveal">
+    <div class="contact-page-hero-box">
+      <span class="contact-page-badge">Связаться со мной</span>
+
+      <h1>Контакты и сотрудничество</h1>
+
+      <p class="contact-page-hero-text">
+        Если вам нужен современный сайт, интернет-магазин, посадочная страница
+        или доработка текущего проекта — напишите мне. Я открыт к рабочим
+        предложениям, интересным задачам и новым проектам.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#contact-main" class="btn">Написать сообщение</a>
+        <a href="#location" class="btn-outline">Посмотреть локацию</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTACT -->
+  <section class="container reveal" id="contact-main">
+    <div class="contact-page-layout">
+
+      <!-- CONTACT INFO -->
+      <div class="contact-page-card contact-info-card">
+        <span class="contact-page-kicker">Контакты</span>
+        <h2 class="contact-page-title">Давайте обсудим ваш проект</h2>
+
+        <p class="contact-page-text">
+          Я занимаюсь созданием современных сайтов, интернет-магазинов,
+          интерфейсов и веб-решений. Ниже — удобные способы связи, чтобы
+          обсудить вашу задачу.
+        </p>
+
+        <div class="contact-links-grid">
+
+          <a class="contact-link-card" href="mailto:Arktiko12@gmail.com">
+            <div class="contact-link-icon">✉️</div>
+            <div class="contact-link-content">
+              <h3>Email</h3>
+              <p>Для деловых предложений и рабочих вопросов</p>
+              <span>Arktiko12@gmail.com</span>
+            </div>
+          </a>
+
+          <a class="contact-link-card" href="https://t.me/ArkBat10" target="_blank">
+            <div class="contact-link-icon">📩</div>
+            <div class="contact-link-content">
+              <h3>Telegram</h3>
+              <p>Быстрая связь и общение напрямую</p>
+              <span>@ArkBat10</span>
+            </div>
+          </a>
+
+          <a class="contact-link-card" href="https://github.com/ArkBat" target="_blank">
+            <div class="contact-link-icon">💻</div>
+            <div class="contact-link-content">
+              <h3>GitHub</h3>
+              <p>Проекты, код и практические наработки</p>
+              <span>github.com/ArkBat</span>
+            </div>
+          </a>
+
+          <div class="contact-link-card contact-link-card-static">
+            <div class="contact-link-icon">📞</div>
+            <div class="contact-link-content">
+              <h3>Телефон</h3>
+              <p>Для срочных и важных вопросов</p>
+              <span>+46 000 000 000</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="contact-tag-list">
+          <span class="contact-tag">Сайты</span>
+          <span class="contact-tag">Интернет-магазины</span>
+          <span class="contact-tag">Landing Page</span>
+          <span class="contact-tag">UI / UX</span>
+          <span class="contact-tag">Доработка проектов</span>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-page-card contact-form-card">
+        <span class="contact-page-kicker">Написать сообщение</span>
+        <h2 class="contact-page-title">Отправить заявку</h2>
+
+        <p class="contact-page-text">
+          Заполните форму, и я свяжусь с вами в ближайшее время.
+        </p>
+
+        <form class="contact-form-modern" onsubmit="sendMessage(event)">
+          <div class="contact-form-grid">
+            <div class="contact-input-group">
+              <label for="name">Ваше имя</label>
+              <input id="name" type="text" placeholder="Введите имя" required>
+            </div>
+
+            <div class="contact-input-group">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="example@mail.com" required>
+            </div>
+
+            <div class="contact-input-group contact-full-row">
+              <label for="subject">Тема</label>
+              <input id="subject" type="text" placeholder="Коротко о задаче">
+            </div>
+
+            <div class="contact-input-group contact-full-row">
+              <label for="message">Сообщение</label>
+              <textarea id="message" placeholder="Опишите ваш проект, задачу или вопрос..." required></textarea>
+            </div>
+          </div>
+
+          <button class="btn contact-submit-btn" type="submit">
+            Отправить сообщение
+          </button>
+
+          <div id="formStatus" class="form-status" hidden>
+            Сообщение отправлено! Спасибо за обращение.
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="container reveal" id="location">
+    <div class="contact-location-shell">
+
+      <div class="contact-location-info">
+        <span class="contact-page-kicker">Локация</span>
+        <h2 class="contact-page-title">Саранск, Республика Мордовия</h2>
+
+        <p class="contact-page-text">
+          Я нахожусь в Саранске и работаю как по локальным,
+          так и по удаленным проектам. Основной формат работы —
+          онлайн-сотрудничество.
+        </p>
+
+        <div class="contact-location-points">
+          <div class="contact-location-point">
+            <strong>Город</strong>
+            <span>Саранск</span>
+          </div>
+
+          <div class="contact-location-point">
+            <strong>Регион</strong>
+            <span>Республика Мордовия</span>
+          </div>
+
+          <div class="contact-location-point">
+            <strong>Формат</strong>
+            <span>Удаленно / онлайн</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-map-card">
+        <iframe
+          src="https://www.google.com/maps?q=Saransk,Mordovia&z=12&output=embed"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    ArkadyCode © 2026<br>
+    Персональный сайт разработчика
+  </footer>
+
+  <script>
+    function reveal(){
+      let reveals = document.querySelectorAll(".reveal");
+
+      reveals.forEach(el => {
+        let windowHeight = window.innerHeight;
+        let elementTop = el.getBoundingClientRect().top;
+
+        if(elementTop < windowHeight - 120){
+          el.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", reveal);
+    reveal();
+
+    function sendMessage(event){
+      event.preventDefault();
+
+      const form = event.target;
+      const status = document.getElementById("formStatus");
+
+      form.reset();
+      status.hidden = false;
+
+      setTimeout(() => {
+        status.hidden = true;
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
