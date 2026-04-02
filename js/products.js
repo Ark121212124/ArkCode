@@ -50,11 +50,11 @@ CPU
   brand: "AMD",
   stock: 8,
 
-  image: imgPath("images/#U041F#U0440#U043E#U0446#U0435#U0441#U0441#U043E#U0440 AMD Ryzen 9 7900X OEM/1.jpg"),
+  image: imgPath("images/AMD Ryzen 9 7900X OEM/1.jpg"),
 
   images: [
-    imgPath("images/#U041F#U0440#U043E#U0446#U0435#U0441#U0441#U043E#U0440 AMD Ryzen 9 7900X OEM/1.jpg"),
-    imgPath("images/#U041F#U0440#U043E#U0446#U0435#U0441#U0441#U043E#U0440 AMD Ryzen 9 7900X OEM/2.jpg")
+    imgPath("images/AMD Ryzen 9 7900X OEM/1.jpg"),
+    imgPath("images/AMD Ryzen 9 7900X OEM/2.jpg")
   ],
 
   rating: 5,
@@ -82,18 +82,18 @@ GPU
   brand: "NVIDIA",
   stock: 10,
 
-  image: imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/1.jpg"),
+  image: imgPath("images/RTX 4070/1.jpg"),
 
   images: [
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/1.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/2.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/3.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/4.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/5.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/6.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/7.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/8.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/9.jpg")
+    imgPath("images/RTX 4070/1.jpg"),
+    imgPath("images/RTX 4070/2.jpg"),
+    imgPath("images/RTX 4070/3.jpg"),
+    imgPath("images/RTX 4070/4.jpg"),
+    imgPath("images/RTX 4070/5.jpg"),
+    imgPath("images/RTX 4070/6.jpg"),
+    imgPath("images/RTX 4070/7.jpg"),
+    imgPath("images/RTX 4070/8.jpg"),
+    imgPath("images/RTX 4070/9.jpg")
   ],
 
   rating: 5,
@@ -117,17 +117,17 @@ GPU
   brand: "AMD",
   stock: 6,
 
-  image: imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/1.jpg"),
+  image: imgPath("images/AMD Radeon RX 7800/1.jpg"),
 
   images: [
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/1.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/2.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/3.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/4.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/5.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/6.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/7.jpg"),
-    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/8.jpg")
+    imgPath("images/AMD Radeon RX 7800/1.jpg"),
+    imgPath("images/AMD Radeon RX 7800/2.jpg"),
+    imgPath("images/AMD Radeon RX 7800/3.jpg"),
+    imgPath("images/AMD Radeon RX 7800/4.jpg"),
+    imgPath("images/AMD Radeon RX 7800/5.jpg"),
+    imgPath("images/AMD Radeon RX 7800/6.jpg"),
+    imgPath("images/AMD Radeon RX 7800/7.jpg"),
+    imgPath("images/AMD Radeon RX 7800/8.jpg")
   ],
 
   rating: 4,
@@ -155,14 +155,14 @@ RAM
   brand: "Corsair",
   stock: 15,
 
-  image: imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/1.jpg"),
+  image: imgPath("images/Corsair/1.jpg"),
 
   images: [
-    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/1.jpg"),
-    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/2.jpg"),
-    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/3.jpg"),
-    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/4.jpg"),
-    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/5.jpg")
+    imgPath("images/Corsair/1.jpg"),
+    imgPath("images/Corsair/2.jpg"),
+    imgPath("images/Corsair/3.jpg"),
+    imgPath("images/Corsair/4.jpg"),
+    imgPath("images/Corsair/5.jpg")
   ],
 
   rating: 4,
@@ -186,13 +186,13 @@ RAM
   brand: "Kingston",
   stock: 20,
 
-  image: imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/1.jpg"),
+  image: imgPath("images/Kingston/1.jpg"),
 
   images: [
-    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/1.jpg"),
-    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/2.jpg"),
-    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/3.jpg"),
-    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/4.jpg")
+    imgPath("images/Kingston/1.jpg"),
+    imgPath("images/Kingston/2.jpg"),
+    imgPath("images/Kingston/3.jpg"),
+    imgPath("images/Kingston/4.jpg")
   ],
 
   rating: 4,
