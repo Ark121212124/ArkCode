@@ -1,281 +1,225 @@
 /* =========================
-ЗАГРУЗКА ТОВАРОВ
+ЛОКАЛЬНЫЕ ПУТИ К КАРТИНКАМ
 ========================= */
 
-let products =
-JSON.parse(localStorage.getItem("products")) || [
+function imgPath(path){
+  return encodeURI(path);
+}
+
+const defaultProducts = [
 
 /* =========================
 CPU
 ========================= */
 
 {
-id:1,
+  id: 1,
+  name: "Intel Core i7-13700K",
+  price: 399,
+  category: "cpu",
+  brand: "Intel",
+  stock: 12,
 
-name:"Intel Core i7-13700K",
+  image: imgPath("images/Intel Core i7-13700K BOX/1.jpg"),
 
-price:399,
+  images: [
+    imgPath("images/Intel Core i7-13700K BOX/1.jpg"),
+    imgPath("images/Intel Core i7-13700K BOX/2.jpg"),
+    imgPath("images/Intel Core i7-13700K BOX/3.jpg"),
+    imgPath("images/Intel Core i7-13700K BOX/4.jpg")
+  ],
 
-category:"cpu",
+  rating: 5,
 
-brand:"Intel",
+  description: "Мощный процессор Intel Core i7 13-го поколения для игр, разработки и работы с графикой.",
 
-stock:12,
-
-image:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7",
-
-images:[
-
-"https://images.unsplash.com/photo-1587202372775-e229f172b9d7",
-"https://images.unsplash.com/photo-1518779578993-ec3579fee39f",
-"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789"
-
-],
-
-rating:5,
-
-description:
-"Мощный процессор Intel Core i7 13-го поколения для игр, разработки и работы с графикой.",
-
-specs:[
-
-"16 ядер / 24 потока",
-"Частота до 5.4 GHz",
-"Сокет LGA1700",
-"Поддержка DDR5",
-"TDP 125W"
-
-]
-
+  specs: [
+    "16 ядер / 24 потока",
+    "Частота до 5.4 GHz",
+    "Сокет LGA1700",
+    "Поддержка DDR5",
+    "TDP 125W"
+  ]
 },
-
-
 
 {
-id:2,
+  id: 2,
+  name: "AMD Ryzen 9 7900X",
+  price: 449,
+  category: "cpu",
+  brand: "AMD",
+  stock: 8,
 
-name:"AMD Ryzen 9 7900X",
+  image: imgPath("images/#U041F#U0440#U043E#U0446#U0435#U0441#U0441#U043E#U0440 AMD Ryzen 9 7900X OEM/1.jpg"),
 
-price:449,
+  images: [
+    imgPath("images/#U041F#U0440#U043E#U0446#U0435#U0441#U0441#U043E#U0440 AMD Ryzen 9 7900X OEM/1.jpg"),
+    imgPath("images/#U041F#U0440#U043E#U0446#U0435#U0441#U0441#U043E#U0440 AMD Ryzen 9 7900X OEM/2.jpg")
+  ],
 
-category:"cpu",
+  rating: 5,
 
-brand:"AMD",
+  description: "Флагманский процессор AMD Ryzen для высокопроизводительных рабочих станций.",
 
-stock:8,
-
-image:"https://images.unsplash.com/photo-1591799265444-d66432b91588",
-
-images:[
-
-"https://images.unsplash.com/photo-1591799265444-d66432b91588",
-"https://images.unsplash.com/photo-1587202372775-e229f172b9d7",
-"https://images.unsplash.com/photo-1518779578993-ec3579fee39f"
-
-],
-
-rating:5,
-
-description:
-"Флагманский процессор AMD Ryzen для высокопроизводительных рабочих станций.",
-
-specs:[
-
-"12 ядер / 24 потока",
-"Частота до 5.6 GHz",
-"Сокет AM5",
-"Поддержка DDR5",
-"PCIe 5.0"
-
-]
-
+  specs: [
+    "12 ядер / 24 потока",
+    "Частота до 5.6 GHz",
+    "Сокет AM5",
+    "Поддержка DDR5",
+    "PCIe 5.0"
+  ]
 },
-
-
 
 /* =========================
 GPU
 ========================= */
 
 {
-id:3,
+  id: 3,
+  name: "NVIDIA RTX 4070",
+  price: 699,
+  category: "gpu",
+  brand: "NVIDIA",
+  stock: 10,
 
-name:"NVIDIA RTX 4070",
+  image: imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/1.jpg"),
 
-price:699,
+  images: [
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/1.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/2.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/3.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/4.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/5.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/6.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/7.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/8.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430 RTX 4070/9.jpg")
+  ],
 
-category:"gpu",
+  rating: 5,
 
-brand:"NVIDIA",
+  description: "Современная видеокарта NVIDIA RTX 4070 с поддержкой Ray Tracing и DLSS 3.",
 
-stock:10,
-
-image:"https://images.unsplash.com/photo-1591488320449-011701bb6704",
-
-images:[
-
-"https://images.unsplash.com/photo-1591488320449-011701bb6704",
-"https://images.unsplash.com/photo-1587202372775-e229f172b9d7",
-"https://images.unsplash.com/photo-1591799265444-d66432b91588"
-
-],
-
-rating:5,
-
-description:
-"Современная видеокарта NVIDIA RTX 4070 с поддержкой Ray Tracing и DLSS 3.",
-
-specs:[
-
-"12GB GDDR6X",
-"Ray Tracing",
-"DLSS 3",
-"PCIe 4.0",
-"Поддержка 4K"
-
-]
-
+  specs: [
+    "12GB GDDR6X",
+    "Ray Tracing",
+    "DLSS 3",
+    "PCIe 4.0",
+    "Поддержка 4K"
+  ]
 },
-
-
 
 {
-id:4,
+  id: 4,
+  name: "AMD Radeon RX 7800 XT",
+  price: 649,
+  category: "gpu",
+  brand: "AMD",
+  stock: 6,
 
-name:"AMD Radeon RX 7800 XT",
+  image: imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/1.jpg"),
 
-price:649,
+  images: [
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/1.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/2.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/3.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/4.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/5.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/6.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/7.jpg"),
+    imgPath("images/#U0412#U0438#U0434#U0435#U043E#U043A#U0430#U0440#U0442#U0430  AMD Radeon RX 7800/8.jpg")
+  ],
 
-category:"gpu",
+  rating: 4,
 
-brand:"AMD",
+  description: "Высокопроизводительная видеокарта AMD Radeon для игр в 1440p и 4K.",
 
-stock:6,
-
-image:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7",
-
-images:[
-
-"https://images.unsplash.com/photo-1587202372775-e229f172b9d7",
-"https://images.unsplash.com/photo-1591488320449-011701bb6704",
-"https://images.unsplash.com/photo-1591799265444-d66432b91588"
-
-],
-
-rating:4,
-
-description:
-"Высокопроизводительная видеокарта AMD Radeon для игр в 1440p и 4K.",
-
-specs:[
-
-"16GB GDDR6",
-"RDNA 3",
-"PCIe 4.0",
-"Ray Tracing",
-"HDMI 2.1"
-
-]
-
+  specs: [
+    "16GB GDDR6",
+    "RDNA 3",
+    "PCIe 4.0",
+    "Ray Tracing",
+    "HDMI 2.1"
+  ]
 },
-
-
 
 /* =========================
 RAM
 ========================= */
 
 {
-id:5,
+  id: 5,
+  name: "Corsair Vengeance DDR5 32GB",
+  price: 159,
+  category: "memory",
+  brand: "Corsair",
+  stock: 15,
 
-name:"Corsair Vengeance DDR5 32GB",
+  image: imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/1.jpg"),
 
-price:159,
+  images: [
+    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/1.jpg"),
+    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/2.jpg"),
+    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/3.jpg"),
+    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/4.jpg"),
+    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Corsair/5.jpg")
+  ],
 
-category:"memory",
+  rating: 4,
 
-brand:"Corsair",
+  description: "Высокоскоростная оперативная память DDR5 для современных ПК.",
 
-stock:15,
-
-image:"https://images.unsplash.com/photo-1591799265444-d66432b91588",
-
-images:[
-
-"https://images.unsplash.com/photo-1591799265444-d66432b91588",
-"https://images.unsplash.com/photo-1518779578993-ec3579fee39f",
-"https://images.unsplash.com/photo-1587202372775-e229f172b9d7"
-
-],
-
-rating:4,
-
-description:
-"Высокоскоростная оперативная память DDR5 для современных ПК.",
-
-specs:[
-
-"32GB (2x16GB)",
-"DDR5",
-"5600MHz",
-"RGB подсветка",
-"Низкие тайминги"
-
-]
-
+  specs: [
+    "32GB (2x16GB)",
+    "DDR5",
+    "5600MHz",
+    "RGB подсветка",
+    "Низкие тайминги"
+  ]
 },
 
-
-
 {
-id:6,
+  id: 6,
+  name: "Kingston Fury 16GB DDR4",
+  price: 79,
+  category: "memory",
+  brand: "Kingston",
+  stock: 20,
 
-name:"Kingston Fury 16GB DDR4",
+  image: imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/1.jpg"),
 
-price:79,
+  images: [
+    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/1.jpg"),
+    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/2.jpg"),
+    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/3.jpg"),
+    imgPath("images/#U041E#U043F#U0435#U0440#U0430#U0442#U0438#U0432#U043D#U0430#U044F #U043F#U0430#U043C#U044F#U0442#U044C Kingston/4.jpg")
+  ],
 
-category:"memory",
+  rating: 4,
 
-brand:"Kingston",
+  description: "Надежная оперативная память Kingston для игровых ПК.",
 
-stock:20,
-
-image:"https://images.unsplash.com/photo-1518779578993-ec3579fee39f",
-
-images:[
-
-"https://images.unsplash.com/photo-1518779578993-ec3579fee39f",
-"https://images.unsplash.com/photo-1591799265444-d66432b91588",
-"https://images.unsplash.com/photo-1587202372775-e229f172b9d7"
-
-],
-
-rating:4,
-
-description:
-"Надежная оперативная память Kingston для игровых ПК.",
-
-specs:[
-
-"16GB",
-"DDR4",
-"3200MHz",
-"XMP профиль",
-"Низкое энергопотребление"
-
-]
-
+  specs: [
+    "16GB",
+    "DDR4",
+    "3200MHz",
+    "XMP профиль",
+    "Низкое энергопотребление"
+  ]
 }
 
-]
-
-
+];
 
 /* =========================
-СОХРАНИТЬ В LOCALSTORAGE
+LOCALSTORAGE
 ========================= */
 
-localStorage.setItem(
-"products",
-JSON.stringify(products)
-)
+let products = defaultProducts;
+
+/* 
+Если хочешь всегда брать свежие данные из файла:
+оставь так, как ниже.
+Это перезапишет старые ссылки на Unsplash.
+*/
+localStorage.setItem("products", JSON.stringify(defaultProducts));
+products = JSON.parse(localStorage.getItem("products")) || defaultProducts;
