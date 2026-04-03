@@ -117,17 +117,17 @@ GPU
   brand: "AMD",
   stock: 6,
 
-  image: imgPath("images/Видеокарта AMD Radeon RX 7800/1.jpg"),
+  image: "images/amd-rx-7800/1.jpg",
 
   images: [
-    imgPath("images/Видеокарта AMD Radeon RX 7800/1.jpg"),
-    imgPath("images/Видеокарта AMD Radeon RX 7800/2.jpg"),
-    imgPath("images/Видеокарта AMD Radeon RX 7800/3.jpg"),
-    imgPath("images/Видеокарта AMD Radeon RX 7800/4.jpg"),
-    imgPath("images/Видеокарта AMD Radeon RX 7800/5.jpg"),
-    imgPath("images/Видеокарта AMD Radeon RX 7800/6.jpg"),
-    imgPath("images/Видеокарта AMD Radeon RX 7800/7.jpg"),
-    imgPath("images/Видеокарта AMD Radeon RX 7800/8.jpg")
+    "images/amd-rx-7800/1.jpg",
+    "images/amd-rx-7800/2.jpg",
+    "images/amd-rx-7800/3.jpg",
+    "images/amd-rx-7800/4.jpg",
+    "images/amd-rx-7800/5.jpg",
+    "images/amd-rx-7800/6.jpg",
+    "images/amd-rx-7800/7.jpg",
+    "images/amd-rx-7800/8.jpg"
   ],
 
   rating: 4,
