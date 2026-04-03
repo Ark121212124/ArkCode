@@ -117,7 +117,7 @@ GPU
   brand: "AMD",
   stock: 6,
 
-  image: imgPath("images/Видеокарта AMD Radeon RX 7800 XT/1.jpg"),
+  image: imgPath("images/Видеокарта AMD Radeon RX 7800/1.jpg"),
 
   images: [
     imgPath("images/Видеокарта AMD Radeon RX 7800/1.jpg"),
