@@ -50,11 +50,11 @@ CPU
   brand: "AMD",
   stock: 8,
 
-  image: imgPath("images/AMD Ryzen 9 7900X OEM/1.jpg"),
+  image: imgPath("images/Процессор AMD Ryzen 9 7900X OEM/1.jpg"),
 
   images: [
-    imgPath("images/AMD Ryzen 9 7900X OEM/1.jpg"),
-    imgPath("images/AMD Ryzen 9 7900X OEM/2.jpg")
+    imgPath("images/Процессор AMD Ryzen 9 7900X OEM/1.jpg"),
+    imgPath("images/Процессор AMD Ryzen 9 7900X OEM/2.jpg")
   ],
 
   rating: 5,
@@ -82,18 +82,18 @@ GPU
   brand: "NVIDIA",
   stock: 10,
 
-  image: imgPath("images/RTX 4070/1.jpg"),
+  image: imgPath("images/Видеокарта RTX 4070/1.jpg"),
 
   images: [
-    imgPath("images/RTX 4070/1.jpg"),
-    imgPath("images/RTX 4070/2.jpg"),
-    imgPath("images/RTX 4070/3.jpg"),
-    imgPath("images/RTX 4070/4.jpg"),
-    imgPath("images/RTX 4070/5.jpg"),
-    imgPath("images/RTX 4070/6.jpg"),
-    imgPath("images/RTX 4070/7.jpg"),
-    imgPath("images/RTX 4070/8.jpg"),
-    imgPath("images/RTX 4070/9.jpg")
+    imgPath("images/Видеокарта RTX 4070/1.jpg"),
+    imgPath("images/Видеокарта RTX 4070/2.jpg"),
+    imgPath("images/Видеокарта RTX 4070/3.jpg"),
+    imgPath("images/Видеокарта RTX 4070/4.jpg"),
+    imgPath("images/Видеокарта RTX 4070/5.jpg"),
+    imgPath("images/Видеокарта RTX 4070/6.jpg"),
+    imgPath("images/Видеокарта RTX 4070/7.jpg"),
+    imgPath("images/Видеокарта RTX 4070/8.jpg"),
+    imgPath("images/Видеокарта RTX 4070/9.jpg")
   ],
 
   rating: 5,
@@ -117,17 +117,17 @@ GPU
   brand: "AMD",
   stock: 6,
 
-  image: imgPath("images/AMD Radeon RX 7800/1.jpg"),
+  image: imgPath("images/Видеокарта AMD Radeon RX 7800 XT/1.jpg"),
 
   images: [
-    imgPath("images/AMD Radeon RX 7800/1.jpg"),
-    imgPath("images/AMD Radeon RX 7800/2.jpg"),
-    imgPath("images/AMD Radeon RX 7800/3.jpg"),
-    imgPath("images/AMD Radeon RX 7800/4.jpg"),
-    imgPath("images/AMD Radeon RX 7800/5.jpg"),
-    imgPath("images/AMD Radeon RX 7800/6.jpg"),
-    imgPath("images/AMD Radeon RX 7800/7.jpg"),
-    imgPath("images/AMD Radeon RX 7800/8.jpg")
+    imgPath("images/Видеокарта AMD Radeon RX 7800 XT/1.jpg"),
+    imgPath("images/Видеокарта AMD Radeon RX 7800 XT/2.jpg"),
+    imgPath("images/Видеокарта AMD Radeon RX 7800 XT/3.jpg"),
+    imgPath("images/Видеокарта AMD Radeon RX 7800 XT/4.jpg"),
+    imgPath("images/Видеокарта AMD Radeon RX 7800 XT/5.jpg"),
+    imgPath("images/Видеокарта AMD Radeon RX 7800 XT/6.jpg"),
+    imgPath("images/Видеокарта AMD Radeon RX 7800 XT/7.jpg"),
+    imgPath("images/Видеокарта AMD Radeon RX 7800 XT/8.jpg")
   ],
 
   rating: 4,
@@ -155,14 +155,14 @@ RAM
   brand: "Corsair",
   stock: 15,
 
-  image: imgPath("images/Corsair/1.jpg"),
+  image: imgPath("images/Оперативная память Corsair/1.jpg"),
 
   images: [
-    imgPath("images/Corsair/1.jpg"),
-    imgPath("images/Corsair/2.jpg"),
-    imgPath("images/Corsair/3.jpg"),
-    imgPath("images/Corsair/4.jpg"),
-    imgPath("images/Corsair/5.jpg")
+    imgPath("images/Оперативная память Corsair/1.jpg"),
+    imgPath("images/Оперативная память Corsair/2.jpg"),
+    imgPath("images/Оперативная память Corsair/3.jpg"),
+    imgPath("images/Оперативная память Corsair/4.jpg"),
+    imgPath("images/Оперативная память Corsair/5.jpg")
   ],
 
   rating: 4,
@@ -186,13 +186,13 @@ RAM
   brand: "Kingston",
   stock: 20,
 
-  image: imgPath("images/Kingston/1.jpg"),
+  image: imgPath("images/Оперативная память Kingston/1.jpg"),
 
   images: [
-    imgPath("images/Kingston/1.jpg"),
-    imgPath("images/Kingston/2.jpg"),
-    imgPath("images/Kingston/3.jpg"),
-    imgPath("images/Kingston/4.jpg")
+    imgPath("images/Оперативная память Kingston/1.jpg"),
+    imgPath("images/Оперативная память Kingston/2.jpg"),
+    imgPath("images/Оперативная память Kingston/3.jpg"),
+    imgPath("images/Оперативная память Kingston/4.jpg")
   ],
 
   rating: 4,
