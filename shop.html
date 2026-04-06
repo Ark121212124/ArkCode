@@ -1,287 +1,420 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Магазин | ArkadyCode</title>
 
-<title>ArkadyCode Store</title>
+  <link rel="stylesheet" href="css/style.css" />
 
-<link rel="stylesheet" href="css/style.css">
-
-<script src="js/products.js"></script>
-<script src="js/auth.js" defer></script>
-<script src="js/cart.js" defer></script>
-
+  <script src="js/products.js"></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/cart.js" defer></script>
 </head>
-
 <body>
 
-
-<!-- VIDEO BACKGROUND -->
-
-<div class="video-bg">
-  <video class="bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="./video/bg.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео.
-  </video>
-</div>
-
-
-
-<!-- HEADER -->
-
-<header>
-
-<div class="logo">
-ArkadyCode
-</div>
-
-<nav>
-
-<a href="index.html">Главная</a>
-<a href="articles.html">Статьи</a>
-<a id="shopLink" class="js-shop-link" href="shop.html">Магазин</a>
-<a href="portfolio.html">Портфолио</a>
-<a href="contact.html">Контакты</a>
-<a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Вход</a>
-
-<a class="cart-icon js-cart-link" href="#" onclick="openCart(); return false;">
-🛒 <span id="cart-count">0</span>
-</a>
-
-</nav>
-
-</header>
-
-
-
-<!-- HERO -->
-
-<section class="hero reveal">
-
-<h1>ArkadyCode Store</h1>
-
-<p>
-Магазин комплектующих для ПК  
-и товаров для разработчиков
-</p>
-
-<div class="hero-buttons">
-
-<a href="#catalog" class="btn">
-Смотреть товары
-</a>
-
-</div>
-
-</section>
-
-
-
-<!-- CATALOG -->
-
-<section class="container reveal" id="catalog">
-
-<h2>Каталог товаров</h2>
-
-
-<input
-type="text"
-id="search"
-placeholder="Поиск товаров..."
-onkeyup="searchProducts()"
-class="search"
->
-
-
-<div class="categories">
-
-<button onclick="filterCategory('all')">Все</button>
-
-<button onclick="filterCategory('cpu')">
-Процессоры
-</button>
-
-<button onclick="filterCategory('gpu')">
-Видеокарты
-</button>
-
-<button onclick="filterCategory('memory')">
-Оперативная память
-</button>
-
-</div>
-
-
-
-<div class="products" id="product-list"></div>
-
-</section>
-
-
-
-<!-- WHY STORE -->
-
-<section class="container reveal">
-
-<h2>Почему ArkadyCode Store</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Быстрая доставка</h3>
-
-<p>
-Отправка товаров по всему миру.
-Быстрая обработка заказов.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Гарантия качества</h3>
-
-<p>
-Только проверенные комплектующие
-от известных производителей.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Поддержка 24/7</h3>
-
-<p>
-Помощь в выборе комплектующих
-и сборке компьютера.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- CART PANEL -->
-
-<div id="cart-panel">
-
-<h2>Корзина</h2>
-
-<ul id="cart"></ul>
-
-<p class="total">
-Итого: $<span id="total">0</span>
-</p>
-
-<a href="cart.html" class="panel-checkout-link">
-<button class="btn">
-Оформить заказ
-</button>
-</a>
-
-<button onclick="closeCart()" class="btn-outline">
-Закрыть
-</button>
-
-</div>
-
-
-
-<footer>
-
-ArkadyCode © 2026  
-Интернет-магазин комплектующих
-
-</footer>
-
-
-
-<script>
-function reveal(){
-  const reveals = document.querySelectorAll(".reveal");
-
-  reveals.forEach(element => {
-    const windowHeight = window.innerHeight;
-    const elementTop = element.getBoundingClientRect().top;
-
-    if(elementTop < windowHeight - 120){
-      element.classList.add("active");
-    }
-  });
-}
-
-function addToCartById(id){
-  const product = Array.isArray(window.products)
-    ? window.products.find(item => String(item.id) === String(id))
-    : null;
-
-  if(product){
-    addToCart(product);
-  }
-}
-
-function renderProducts(list){
-  const container = document.getElementById("product-list");
-
-  if(!container){
-    return;
-  }
-
-  container.innerHTML = list.map(product => `
-    <div class="product" data-category="${product.category}">
-      <a href="product.html?id=${product.id}">
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
+  <!-- VIDEO BACKGROUND -->
+  <div class="video-bg">
+    <video class="bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="./video/bg.mp4" type="video/mp4" />
+      Ваш браузер не поддерживает видео.
+    </video>
+  </div>
+
+  <header>
+    <div class="logo">ArkadyCode</div>
+
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="articles.html">Статьи</a>
+      <a class="js-shop-link" href="shop.html">Магазин</a>
+      <a href="portfolio.html">Портфолио</a>
+      <a href="contact.html">Контакты</a>
+      <a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Вход</a>
+      <a class="cart-icon" href="javascript:void(0)" onclick="openCart()">
+        🛒 <span id="cart-count">0</span>
       </a>
+    </nav>
+  </header>
 
-      <div class="rating">⭐ ⭐ ⭐ ⭐ ⭐</div>
-      <p class="price">${formatPrice(product.price)}</p>
-      <button type="button" onclick="addToCartById('${product.id}')">В корзину</button>
+  <section class="container reveal" id="catalog">
+    <h2>Каталог товаров</h2>
+
+    <div class="shop-toolbar">
+      <input
+        type="text"
+        id="search"
+        placeholder="Поиск товаров..."
+        class="search"
+      />
+
+      <select id="sortSelect" class="search">
+        <option value="default">Сортировка</option>
+        <option value="priceLow">Сначала дешевле</option>
+        <option value="priceHigh">Сначала дороже</option>
+        <option value="rating">По рейтингу</option>
+        <option value="name">По названию</option>
+      </select>
     </div>
-  `).join("");
-}
 
-function searchProducts(){
-  const value = document.getElementById("search").value.toLowerCase();
-  const filtered = products.filter(product => product.name.toLowerCase().includes(value));
-  renderProducts(filtered);
-}
+    <div class="categories" id="category-buttons"></div>
 
-function filterCategory(category){
-  if(category === "all"){
-    renderProducts(products);
-    return;
-  }
+    <div id="product-list"></div>
+  </section>
 
-  const filtered = products.filter(product => product.category === category);
-  renderProducts(filtered);
-}
+  <footer>
+    ArkadyCode © 2026
+  </footer>
 
-document.addEventListener("DOMContentLoaded", () => {
-  const pageTarget = `shop.html${window.location.search}`;
-  const user = requireAuth(pageTarget);
+  <script>
+    function reveal() {
+      const reveals = document.querySelectorAll(".reveal");
 
-  if(!user){
-    return;
-  }
+      reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
 
-  renderProducts(products);
-  reveal();
-  openCart();
-});
+        if (elementTop < windowHeight - 120) {
+          element.classList.add("active");
+        }
+      });
+    }
 
-window.addEventListener("scroll", reveal);
-</script>
+    function escapeHtml(str = "") {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
 
+    function formatPrice(value) {
+      const amount = Number(value) || 0;
+      return `${amount.toLocaleString("ru-RU")} ₽`;
+    }
+
+    function getProductImage(product) {
+      if (Array.isArray(product.images) && product.images.length) {
+        return product.images[0];
+      }
+
+      if (product.image) {
+        return product.image;
+      }
+
+      return "images/no-image.png";
+    }
+
+    function addToCartById(id) {
+      const product = Array.isArray(window.products)
+        ? window.products.find(item => String(item.id) === String(id))
+        : null;
+
+      if (product) {
+        addToCart(product);
+      }
+    }
+
+    const storeState = {
+      selectedCategory: "all",
+      search: "",
+      sort: "default"
+    };
+
+    function getCategoryLabel(category) {
+      if (typeof categoryLabels === "object" && categoryLabels?.[category]) {
+        return categoryLabels[category];
+      }
+
+      const fallback = {
+        cpu: "Процессоры",
+        gpu: "Видеокарты",
+        memory: "Оперативная память",
+        motherboard: "Материнские платы",
+        storage: "Накопители",
+        cooler: "Охлаждение",
+        psu: "Блоки питания",
+        case: "Корпуса"
+      };
+
+      return fallback[category] || category || "Товары";
+    }
+
+    function getCategoryOrderValue(category) {
+      if (Array.isArray(categoryOrder)) {
+        const index = categoryOrder.indexOf(category);
+        return index === -1 ? 999 : index;
+      }
+
+      return 999;
+    }
+
+    function sortList(list, sortType = "default") {
+      const sorted = [...list];
+
+      if (sortType === "priceLow") {
+        sorted.sort((a, b) => (Number(a.price) || 0) - (Number(b.price) || 0));
+        return sorted;
+      }
+
+      if (sortType === "priceHigh") {
+        sorted.sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
+        return sorted;
+      }
+
+      if (sortType === "rating") {
+        sorted.sort((a, b) => {
+          const ratingDiff = (Number(b.rating) || 0) - (Number(a.rating) || 0);
+          if (ratingDiff !== 0) return ratingDiff;
+          return (Number(a.price) || 0) - (Number(b.price) || 0);
+        });
+        return sorted;
+      }
+
+      if (sortType === "name") {
+        sorted.sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""), "ru"));
+        return sorted;
+      }
+
+      sorted.sort((a, b) => {
+        const categoryDiff = getCategoryOrderValue(a.category) - getCategoryOrderValue(b.category);
+        if (categoryDiff !== 0) return categoryDiff;
+
+        return String(a.name || "").localeCompare(String(b.name || ""), "ru");
+      });
+
+      return sorted;
+    }
+
+    function filterProducts() {
+      const all = Array.isArray(window.products) ? [...window.products] : [];
+      let filtered = all;
+
+      if (storeState.selectedCategory !== "all") {
+        filtered = filtered.filter(product => product.category === storeState.selectedCategory);
+      }
+
+      if (storeState.search.trim()) {
+        const query = storeState.search.trim().toLowerCase();
+
+        filtered = filtered.filter(product => {
+          const name = String(product.name || "").toLowerCase();
+          const brand = String(product.brand || "").toLowerCase();
+          const category = String(getCategoryLabel(product.category) || "").toLowerCase();
+          const description = String(product.description || "").toLowerCase();
+
+          return (
+            name.includes(query) ||
+            brand.includes(query) ||
+            category.includes(query) ||
+            description.includes(query)
+          );
+        });
+      }
+
+      return sortList(filtered, storeState.sort);
+    }
+
+    function renderProductCard(product) {
+      const img = getProductImage(product);
+      const ratingValue = Number(product.rating) || 0;
+      const categoryName = getCategoryLabel(product.category);
+
+      return `
+        <div class="product" data-category="${escapeHtml(product.category)}">
+          <a href="product.html?id=${product.id}">
+            <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)}">
+            <div class="product-category">${escapeHtml(categoryName)}</div>
+            <h3>${escapeHtml(product.name)}</h3>
+          </a>
+
+          <div class="rating">${"★".repeat(Math.round(ratingValue)) || "Без рейтинга"}</div>
+          <p class="price">${formatPrice(product.price)}</p>
+
+          <button type="button" onclick="addToCartById('${product.id}')">
+            В корзину
+          </button>
+        </div>
+      `;
+    }
+
+    function renderGroupedProducts(list) {
+      const container = document.getElementById("product-list");
+      if (!container) return;
+
+      if (!list.length) {
+        container.innerHTML = `
+          <div class="product-empty">
+            <h3>Ничего не найдено</h3>
+            <p>Попробуй изменить поиск или выбрать другую категорию.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const grouped = {};
+
+      list.forEach(product => {
+        if (!grouped[product.category]) {
+          grouped[product.category] = [];
+        }
+        grouped[product.category].push(product);
+      });
+
+      const categories = Array.isArray(categoryOrder)
+        ? categoryOrder.filter(category => grouped[category]?.length)
+        : Object.keys(grouped);
+
+      container.innerHTML = categories.map(category => {
+        const items = grouped[category] || [];
+
+        return `
+          <div class="catalog-category-block">
+            <div class="catalog-category-header">
+              <h3 class="catalog-category-title">${escapeHtml(getCategoryLabel(category))}</h3>
+              <span class="catalog-category-count">${items.length} шт.</span>
+            </div>
+
+            <div class="products">
+              ${items.map(renderProductCard).join("")}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderFlatProducts(list) {
+      const container = document.getElementById("product-list");
+      if (!container) return;
+
+      if (!list.length) {
+        container.innerHTML = `
+          <div class="product-empty">
+            <h3>Ничего не найдено</h3>
+            <p>Попробуй изменить поиск или выбрать другую категорию.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const categoryLabel = getCategoryLabel(storeState.selectedCategory);
+
+      container.innerHTML = `
+        <div class="catalog-category-block">
+          <div class="catalog-category-header">
+            <h3 class="catalog-category-title">${escapeHtml(categoryLabel)}</h3>
+            <span class="catalog-category-count">${list.length} шт.</span>
+          </div>
+
+          <div class="products">
+            ${list.map(renderProductCard).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProducts() {
+      const filtered = filterProducts();
+
+      if (storeState.selectedCategory === "all") {
+        renderGroupedProducts(filtered);
+      } else {
+        renderFlatProducts(filtered);
+      }
+    }
+
+    function renderCategoryButtons() {
+      const container = document.getElementById("category-buttons");
+      if (!container) return;
+
+      const categories = Array.isArray(categoryOrder) ? categoryOrder : [
+        "cpu",
+        "gpu",
+        "memory",
+        "motherboard",
+        "storage",
+        "cooler",
+        "psu",
+        "case"
+      ];
+
+      container.innerHTML = `
+        <button
+          type="button"
+          class="${storeState.selectedCategory === "all" ? "active" : ""}"
+          onclick="filterCategory('all')"
+        >
+          Все
+        </button>
+
+        ${categories.map(category => `
+          <button
+            type="button"
+            class="${storeState.selectedCategory === category ? "active" : ""}"
+            onclick="filterCategory('${category}')"
+          >
+            ${escapeHtml(getCategoryLabel(category))}
+          </button>
+        `).join("")}
+      `;
+    }
+
+    function searchProducts() {
+      const input = document.getElementById("search");
+      storeState.search = input ? input.value : "";
+      renderProducts();
+    }
+
+    function filterCategory(category) {
+      storeState.selectedCategory = category;
+      renderCategoryButtons();
+      renderProducts();
+    }
+
+    function changeSort(value) {
+      storeState.sort = value || "default";
+      renderProducts();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const pageTarget = `shop.html${window.location.search}`;
+      const user = typeof requireAuth === "function" ? requireAuth(pageTarget) : true;
+
+      if (!user) {
+        return;
+      }
+
+      const searchInput = document.getElementById("search");
+      const sortSelect = document.getElementById("sortSelect");
+
+      if (searchInput) {
+        searchInput.addEventListener("input", searchProducts);
+      }
+
+      if (sortSelect) {
+        sortSelect.addEventListener("change", e => {
+          changeSort(e.target.value);
+        });
+      }
+
+      renderCategoryButtons();
+      renderProducts();
+      reveal();
+
+      if (window.location.search.includes("openCart=1")) {
+        if (typeof openCart === "function") {
+          openCart();
+        }
+      }
+
+      if (typeof updateCartCount === "function") {
+        updateCartCount();
+      }
+    });
+
+    window.addEventListener("scroll", reveal);
+  </script>
 </body>
 </html>
