@@ -14,7 +14,6 @@
 </head>
 <body>
 
-  <!-- VIDEO BACKGROUND -->
   <div class="video-bg">
     <video class="bg-video" autoplay muted loop playsinline preload="auto">
       <source src="./video/bg.mp4" type="video/mp4" />
@@ -31,34 +30,40 @@
       <a class="js-shop-link" href="shop.html">Магазин</a>
       <a href="portfolio.html">Портфолио</a>
       <a href="contact.html">Контакты</a>
-      <a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Вход</a>
+      <a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Профиль</a>
       <a class="cart-icon" href="javascript:void(0)" onclick="openCart()">
         🛒 <span id="cart-count">0</span>
       </a>
     </nav>
   </header>
 
-  <section class="container reveal" id="catalog">
-    <h2>Каталог товаров</h2>
-
-    <div class="shop-toolbar">
-      <input
-        type="text"
-        id="search"
-        placeholder="Поиск товаров..."
-        class="search"
-      />
-
-      <select id="sortSelect" class="search">
-        <option value="default">Сортировка</option>
-        <option value="priceLow">Сначала дешевле</option>
-        <option value="priceHigh">Сначала дороже</option>
-        <option value="rating">По рейтингу</option>
-        <option value="name">По названию</option>
-      </select>
+  <section class="container reveal shop-page" id="catalog">
+    <div class="shop-hero">
+      <span class="shop-badge">ArkadyCode Store</span>
+      <h1>Каталог товаров</h1>
+      <p>Подбери комплектующие по категориям, цене и рейтингу</p>
     </div>
 
-    <div class="categories" id="category-buttons"></div>
+    <div class="shop-panel">
+      <div class="shop-toolbar">
+        <input
+          type="text"
+          id="search"
+          placeholder="Поиск товаров..."
+          class="search shop-search"
+        />
+
+        <select id="sortSelect" class="shop-sort">
+          <option value="default">Сортировка</option>
+          <option value="priceLow">Сначала дешевле</option>
+          <option value="priceHigh">Сначала дороже</option>
+          <option value="rating">По рейтингу</option>
+          <option value="name">По названию</option>
+        </select>
+      </div>
+
+      <div class="categories" id="category-buttons"></div>
+    </div>
 
     <div id="product-list"></div>
   </section>
@@ -107,28 +112,8 @@
       return "images/no-image.png";
     }
 
-    function addToCartById(id) {
-      const product = Array.isArray(window.products)
-        ? window.products.find(item => String(item.id) === String(id))
-        : null;
-
-      if (product) {
-        addToCart(product);
-      }
-    }
-
-    const storeState = {
-      selectedCategory: "all",
-      search: "",
-      sort: "default"
-    };
-
     function getCategoryLabel(category) {
-      if (typeof categoryLabels === "object" && categoryLabels?.[category]) {
-        return categoryLabels[category];
-      }
-
-      const fallback = {
+      const labels = window.categoryLabels || {
         cpu: "Процессоры",
         gpu: "Видеокарты",
         memory: "Оперативная память",
@@ -139,16 +124,95 @@
         case: "Корпуса"
       };
 
-      return fallback[category] || category || "Товары";
+      return labels[category] || category || "Товары";
     }
 
-    function getCategoryOrderValue(category) {
-      if (Array.isArray(categoryOrder)) {
-        const index = categoryOrder.indexOf(category);
-        return index === -1 ? 999 : index;
+    function getCategoryOrder() {
+      if (Array.isArray(window.categoryOrder) && window.categoryOrder.length) {
+        return window.categoryOrder;
       }
 
-      return 999;
+      return [
+        "cpu",
+        "gpu",
+        "memory",
+        "motherboard",
+        "storage",
+        "cooler",
+        "psu",
+        "case"
+      ];
+    }
+
+    function normalizeProducts(items) {
+      if (!Array.isArray(items)) return [];
+
+      return items
+        .filter(Boolean)
+        .map(product => ({
+          ...product,
+          id: Number(product.id),
+          name: String(product.name || "").trim(),
+          category: String(product.category || "").trim().toLowerCase(),
+          brand: String(product.brand || "").trim(),
+          price: Number(product.price) || 0,
+          rating: Number(product.rating) || 0,
+          stock: Number(product.stock) || 0,
+          description: String(product.description || "").trim(),
+          image: product.image || "",
+          images: Array.isArray(product.images) ? product.images : [],
+          specs: Array.isArray(product.specs) ? product.specs : []
+        }))
+        .filter(product => product.id && product.name);
+    }
+
+    function getProductsSource() {
+      const fromWindowProducts = normalizeProducts(window.products);
+      if (fromWindowProducts.length) return fromWindowProducts;
+
+      const fromWindowDefaults = normalizeProducts(window.defaultProducts);
+      if (fromWindowDefaults.length) return fromWindowDefaults;
+
+      try {
+        const fromLocalStorage = normalizeProducts(
+          JSON.parse(localStorage.getItem("products") || "[]")
+        );
+        if (fromLocalStorage.length) return fromLocalStorage;
+      } catch (error) {
+        console.warn("Ошибка чтения localStorage products:", error);
+      }
+
+      return [];
+    }
+
+    let allProducts = getProductsSource();
+
+    if (!allProducts.length && Array.isArray(window.defaultProducts)) {
+      allProducts = normalizeProducts(window.defaultProducts);
+    }
+
+    if (allProducts.length) {
+      localStorage.setItem("products", JSON.stringify(allProducts));
+    }
+
+    function addToCartById(id) {
+      const product = allProducts.find(item => String(item.id) === String(id));
+
+      if (product && typeof addToCart === "function") {
+        addToCart(product);
+      }
+    }
+
+    const storeState = {
+      selectedCategory: "all",
+      search: "",
+      sort: "default"
+    };
+
+    function getCategoryOrderValue(category) {
+      const order = getCategoryOrder();
+      const index = order.indexOf(category);
+      return index === -1 ? 999 : index;
     }
 
     function sortList(list, sortType = "default") {
@@ -189,8 +253,7 @@
     }
 
     function filterProducts() {
-      const all = Array.isArray(window.products) ? [...window.products] : [];
-      let filtered = all;
+      let filtered = [...allProducts];
 
       if (storeState.selectedCategory !== "all") {
         filtered = filtered.filter(product => product.category === storeState.selectedCategory);
@@ -219,18 +282,26 @@
 
     function renderProductCard(product) {
       const img = getProductImage(product);
-      const ratingValue = Number(product.rating) || 0;
+      const ratingValue = Math.round(Number(product.rating) || 0);
       const categoryName = getCategoryLabel(product.category);
+      const stockText = (Number(product.stock) || 0) > 0 ? "В наличии" : "Нет в наличии";
 
       return `
         <div class="product" data-category="${escapeHtml(product.category)}">
-          <a href="product.html?id=${product.id}">
-            <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)}">
+          <a href="product.html?id=${product.id}" class="product-link">
+            <div class="product-image-wrap">
+              <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)}">
+            </div>
+
             <div class="product-category">${escapeHtml(categoryName)}</div>
             <h3>${escapeHtml(product.name)}</h3>
           </a>
 
-          <div class="rating">${"★".repeat(Math.round(ratingValue)) || "Без рейтинга"}</div>
+          <div class="product-meta">
+            <div class="rating">${ratingValue ? "★".repeat(ratingValue) : "Без рейтинга"}</div>
+            <div class="product-stock">${escapeHtml(stockText)}</div>
+          </div>
+
           <p class="price">${formatPrice(product.price)}</p>
 
           <button type="button" onclick="addToCartById('${product.id}')">
@@ -263,17 +334,24 @@
         grouped[product.category].push(product);
       });
 
-      const categories = Array.isArray(categoryOrder)
-        ? categoryOrder.filter(category => grouped[category]?.length)
-        : Object.keys(grouped);
+      const categories = getCategoryOrder().filter(category => grouped[category]?.length);
 
-      container.innerHTML = categories.map(category => {
+      const otherCategories = Object.keys(grouped).filter(
+        category => !categories.includes(category)
+      );
+
+      const finalCategories = [...categories, ...otherCategories];
+
+      container.innerHTML = finalCategories.map(category => {
         const items = grouped[category] || [];
 
         return `
           <div class="catalog-category-block">
             <div class="catalog-category-header">
-              <h3 class="catalog-category-title">${escapeHtml(getCategoryLabel(category))}</h3>
+              <div>
+                <div class="catalog-category-subtitle">Категория</div>
+                <h3 class="catalog-category-title">${escapeHtml(getCategoryLabel(category))}</h3>
+              </div>
               <span class="catalog-category-count">${items.length} шт.</span>
             </div>
 
@@ -304,7 +382,10 @@
       container.innerHTML = `
         <div class="catalog-category-block">
           <div class="catalog-category-header">
-            <h3 class="catalog-category-title">${escapeHtml(categoryLabel)}</h3>
+            <div>
+              <div class="catalog-category-subtitle">Категория</div>
+              <h3 class="catalog-category-title">${escapeHtml(categoryLabel)}</h3>
+            </div>
             <span class="catalog-category-count">${list.length} шт.</span>
           </div>
 
@@ -329,21 +410,12 @@
       const container = document.getElementById("category-buttons");
       if (!container) return;
 
-      const categories = Array.isArray(categoryOrder) ? categoryOrder : [
-        "cpu",
-        "gpu",
-        "memory",
-        "motherboard",
-        "storage",
-        "cooler",
-        "psu",
-        "case"
-      ];
+      const categories = getCategoryOrder();
 
       container.innerHTML = `
         <button
           type="button"
-          class="${storeState.selectedCategory === "all" ? "active" : ""}"
+          class="category-btn ${storeState.selectedCategory === "all" ? "active" : ""}"
           onclick="filterCategory('all')"
         >
           Все
@@ -352,7 +424,7 @@
         ${categories.map(category => `
           <button
             type="button"
-            class="${storeState.selectedCategory === category ? "active" : ""}"
+            class="category-btn ${storeState.selectedCategory === category ? "active" : ""}"
             onclick="filterCategory('${category}')"
           >
             ${escapeHtml(getCategoryLabel(category))}
@@ -379,13 +451,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const pageTarget = `shop.html${window.location.search}`;
-      const user = typeof requireAuth === "function" ? requireAuth(pageTarget) : true;
-
-      if (!user) {
-        return;
-      }
-
       const searchInput = document.getElementById("search");
       const sortSelect = document.getElementById("sortSelect");
 
@@ -403,15 +468,15 @@
       renderProducts();
       reveal();
 
-      if (window.location.search.includes("openCart=1")) {
-        if (typeof openCart === "function") {
-          openCart();
-        }
+      if (window.location.search.includes("openCart=1") && typeof openCart === "function") {
+        openCart();
       }
 
       if (typeof updateCartCount === "function") {
         updateCartCount();
       }
+
+      console.log("Товары магазина:", allProducts);
     });
 
     window.addEventListener("scroll", reveal);
