@@ -15,12 +15,12 @@
 <body>
 
   <!-- VIDEO BACKGROUND -->
-<div class="video-bg">
-  <video class="bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="./video/bg.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео.
-  </video>
-</div>
+  <div class="video-bg">
+    <video class="bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="./video/bg.mp4" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+  </div>
 
   <header>
     <div class="logo">ArkadyCode</div>
@@ -28,12 +28,12 @@
     <nav>
       <a href="index.html">Главная</a>
       <a href="articles.html">Статьи</a>
-      <a id="shopLink" class="js-shop-link" href="shop.html">Магазин</a>
+      <a class="js-shop-link" href="shop.html">Магазин</a>
       <a href="portfolio.html">Портфолио</a>
       <a href="contact.html">Контакты</a>
       <a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Вход</a>
 
-      <a class="cart-icon" onclick="openCart()">
+      <a class="cart-icon" href="javascript:void(0)" onclick="openCart()">
         🛒 <span id="cart-count">0</span>
       </a>
     </nav>
@@ -43,7 +43,9 @@
     <div class="product-shell" id="productShell">
 
       <div class="breadcrumbs">
-        <a id="shopLink" class="js-shop-link" href="shop.html">Магазин</a>
+        <a class="js-shop-link" href="shop.html">Магазин</a>
+        <span>•</span>
+        <span id="crumbCategory">Категория</span>
         <span>•</span>
         <span id="crumbTitle">Карточка товара</span>
       </div>
@@ -140,10 +142,21 @@
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const id = parseInt(params.get("id"));
-    const product = products.find(p => p.id === id);
+    const id = Number(params.get("id"));
+    const product = Array.isArray(products) ? products.find(p => Number(p.id) === id) : null;
 
-    const currencySymbol = "₽"; // если нужны доллары, поменяй на "$"
+    const currencySymbol = "₽";
+
+    const categoryLabels = {
+      cpu: "Процессоры",
+      gpu: "Видеокарты",
+      memory: "Оперативная память",
+      motherboard: "Материнские платы",
+      storage: "Накопители",
+      cooler: "Охлаждение",
+      psu: "Блоки питания",
+      case: "Корпуса"
+    };
 
     function escapeHtml(str = "") {
       return String(str)
@@ -157,6 +170,10 @@
     function formatPrice(value) {
       const num = Number(value) || 0;
       return `${num.toLocaleString("ru-RU")} ${currencySymbol}`;
+    }
+
+    function getCategoryLabel(category) {
+      return categoryLabels[category] || "Товары";
     }
 
     function parseSpec(spec, index) {
@@ -188,10 +205,24 @@
       return html;
     }
 
+    function getProductImages(item) {
+      if (Array.isArray(item.images) && item.images.length) {
+        return item.images;
+      }
+
+      if (item.image) {
+        return [item.image];
+      }
+
+      return ["images/no-image.png"];
+    }
+
     function setMainImage(src, clickedThumb = null) {
       const mainImg = document.getElementById("main-img");
+      if (!mainImg) return;
+
       mainImg.src = src;
-      mainImg.alt = product.name;
+      mainImg.alt = product?.name || "Фото товара";
 
       document.querySelectorAll(".thumb").forEach(thumb => {
         thumb.classList.remove("active");
@@ -200,6 +231,98 @@
       if (clickedThumb) {
         clickedThumb.classList.add("active");
       }
+    }
+
+    function getStockLabel(stock) {
+      const value = Number(stock) || 0;
+
+      if (value <= 0) return "Нет в наличии";
+      if (value <= 5) return "Осталось мало";
+      return "В наличии";
+    }
+
+    function getRelatedProducts(currentProduct, allProducts, limit = 4) {
+      if (!currentProduct || !Array.isArray(allProducts)) return [];
+
+      const sameCategory = allProducts
+        .filter(p => p.id !== currentProduct.id && p.category === currentProduct.category)
+        .sort((a, b) => {
+          const ratingDiff = (Number(b.rating) || 0) - (Number(a.rating) || 0);
+          if (ratingDiff !== 0) return ratingDiff;
+
+          const stockDiff = (Number(b.stock) || 0) - (Number(a.stock) || 0);
+          if (stockDiff !== 0) return stockDiff;
+
+          return (Number(a.price) || 0) - (Number(b.price) || 0);
+        });
+
+      const otherProducts = allProducts
+        .filter(p => p.id !== currentProduct.id && p.category !== currentProduct.category)
+        .sort((a, b) => {
+          const ratingDiff = (Number(b.rating) || 0) - (Number(a.rating) || 0);
+          if (ratingDiff !== 0) return ratingDiff;
+
+          return (Number(a.price) || 0) - (Number(b.price) || 0);
+        });
+
+      return [...sameCategory, ...otherProducts].slice(0, limit);
+    }
+
+    function getReviewsKey(productId) {
+      return `reviews_${productId}`;
+    }
+
+    function loadReviews(productId) {
+      try {
+        return JSON.parse(localStorage.getItem(getReviewsKey(productId))) || [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveReviews(productId, reviews) {
+      localStorage.setItem(getReviewsKey(productId), JSON.stringify(reviews));
+    }
+
+    function displayReviews() {
+      if (!product) return;
+
+      const reviewsList = document.getElementById("reviewsList");
+      if (!reviewsList) return;
+
+      const reviews = loadReviews(product.id);
+
+      if (!reviews.length) {
+        reviewsList.innerHTML = `
+          <li class="review-empty">
+            Пока нет отзывов. Будьте первым, кто оставит отзыв.
+          </li>
+        `;
+        return;
+      }
+
+      reviewsList.innerHTML = reviews.map(review => `
+        <li class="review-item">
+          <div class="review-text">${escapeHtml(review)}</div>
+        </li>
+      `).join("");
+    }
+
+    function addReview() {
+      if (!product) return;
+
+      const input = document.getElementById("reviewInput");
+      if (!input) return;
+
+      const text = input.value.trim();
+      if (!text) return;
+
+      const reviews = loadReviews(product.id);
+      reviews.unshift(text);
+
+      saveReviews(product.id, reviews);
+      input.value = "";
+      displayReviews();
     }
 
     if (!product) {
@@ -211,96 +334,119 @@
         </div>
       `;
     } else {
+      const categoryLabel = getCategoryLabel(product.category);
+      const ratingValue = Number(product.rating) || 0;
+      const stockLabel = getStockLabel(product.stock);
+      const images = getProductImages(product);
+      const specs = Array.isArray(product.specs) ? product.specs : [];
+
       document.title = `${product.name} | ArkadyCode`;
+      document.getElementById("crumbCategory").textContent = categoryLabel;
       document.getElementById("crumbTitle").textContent = product.name;
       document.getElementById("title").textContent = product.name;
       document.getElementById("description").textContent = product.description || "Описание скоро появится.";
       document.getElementById("price").textContent = formatPrice(product.price);
       document.getElementById("productCode").textContent = `Артикул #${String(product.id).padStart(4, "0")}`;
 
-      const ratingValue = Number(product.rating) || 0;
       document.getElementById("rating").innerHTML = renderStars(ratingValue);
       document.getElementById("ratingText").textContent = `${ratingValue.toFixed(1)} / 5`;
 
       const badgeRow = document.getElementById("badgeRow");
       badgeRow.innerHTML = `
-        <span class="product-badge badge-hot">${ratingValue >= 4.5 ? "Хит продаж" : "Новинка"}</span>
-        <span class="product-badge badge-stock">В наличии</span>
+        <span class="product-badge badge-category">${escapeHtml(categoryLabel)}</span>
+        <span class="product-badge badge-hot">${ratingValue >= 4.5 ? "Хит продаж" : "Популярный товар"}</span>
+        <span class="product-badge badge-stock">${escapeHtml(stockLabel)}</span>
       `;
 
-      const images = Array.isArray(product.images) && product.images.length
-        ? product.images
-        : (product.image ? [product.image] : []);
+      setMainImage(images[0]);
 
-      if (images.length) {
-        setMainImage(images[0]);
+      const thumbs = document.getElementById("thumbs");
+      thumbs.innerHTML = images.map((img, index) => `
+        <button
+          class="thumb ${index === 0 ? "active" : ""}"
+          type="button"
+          data-img="${escapeHtml(img)}"
+          aria-label="Фото ${index + 1}"
+        >
+          <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)} ${index + 1}">
+        </button>
+      `).join("");
 
-        const thumbs = document.getElementById("thumbs");
-        thumbs.innerHTML = images.map((img, index) => `
-          <button
-            class="thumb ${index === 0 ? "active" : ""}"
-            type="button"
-            data-img="${escapeHtml(img)}"
-            aria-label="Фото ${index + 1}"
-          >
-            <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)} ${index + 1}">
-          </button>
-        `).join("");
-
-        document.querySelectorAll(".thumb").forEach(thumb => {
-          thumb.addEventListener("click", () => {
-            setMainImage(thumb.dataset.img, thumb);
-          });
+      document.querySelectorAll(".thumb").forEach(thumb => {
+        thumb.addEventListener("click", () => {
+          setMainImage(thumb.dataset.img, thumb);
         });
-      }
+      });
 
       const specsGrid = document.getElementById("specsGrid");
-      const specs = Array.isArray(product.specs) ? product.specs : [];
-
-      specsGrid.innerHTML = specs.map((item, index) => {
-        const spec = parseSpec(item, index);
-
-        return `
+      if (!specs.length) {
+        specsGrid.innerHTML = `
           <div class="spec-card">
-            <span class="spec-label">${escapeHtml(spec.label)}</span>
-            <span class="spec-value">${escapeHtml(spec.value)}</span>
+            <span class="spec-label">Характеристики</span>
+            <span class="spec-value">Пока не заполнены</span>
           </div>
         `;
-      }).join("");
+      } else {
+        specsGrid.innerHTML = specs.map((item, index) => {
+          const spec = parseSpec(item, index);
+
+          return `
+            <div class="spec-card">
+              <span class="spec-label">${escapeHtml(spec.label)}</span>
+              <span class="spec-value">${escapeHtml(spec.value)}</span>
+            </div>
+          `;
+        }).join("");
+      }
 
       document.getElementById("buyBtn").onclick = () => {
         addToCart(product);
       };
 
       const related = document.getElementById("related");
-      const relatedProducts = products.filter(p => p.id !== product.id).slice(0, 4);
+      const relatedProducts = getRelatedProducts(product, products, 4);
 
-      related.innerHTML = relatedProducts.map(p => {
-        const img = (Array.isArray(p.images) && p.images.length) ? p.images[0] : (p.image || "");
-        return `
-          <div class="product">
-            <a href="product.html?id=${p.id}">
-              <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name)}">
-              <h3>${escapeHtml(p.name)}</h3>
-            </a>
-            <p class="price">${formatPrice(p.price)}</p>
-            <button
-              type="button"
-              class="related-buy-btn"
-              data-name="${escapeHtml(p.name)}"
-              data-price="${Number(p.price) || 0}"
-            >
-              В корзину
-            </button>
+      if (!relatedProducts.length) {
+        related.innerHTML = `
+          <div class="product-empty-related">
+            Пока нет рекомендованных товаров.
           </div>
         `;
-      }).join("");
+      } else {
+        related.innerHTML = relatedProducts.map(p => {
+          const img = getProductImages(p)[0];
+          const category = getCategoryLabel(p.category);
 
-      document.querySelectorAll(".related-buy-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          addToCart(btn.dataset.name, Number(btn.dataset.price));
+          return `
+            <div class="product">
+              <a href="product.html?id=${p.id}">
+                <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name)}">
+                <div class="product-category">${escapeHtml(category)}</div>
+                <h3>${escapeHtml(p.name)}</h3>
+              </a>
+              <p class="price">${formatPrice(p.price)}</p>
+              <button
+                type="button"
+                class="related-buy-btn"
+                data-id="${p.id}"
+              >
+                В корзину
+              </button>
+            </div>
+          `;
+        }).join("");
+
+        document.querySelectorAll(".related-buy-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const relatedId = Number(btn.dataset.id);
+            const relatedProduct = products.find(p => Number(p.id) === relatedId);
+
+            if (relatedProduct) {
+              addToCart(relatedProduct);
+            }
+          });
         });
-      });
+      }
 
       displayReviews();
     }
