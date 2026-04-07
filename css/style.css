@@ -1398,3 +1398,171 @@ PORTFOLIO PAGE
   background:
     linear-gradient(135deg,rgba(255,255,255,0.96),rgba(247,249,252,0.96)),
     radial-gradient(circle
+/* =========================
+FIX BUTTONS ON PROFILE / CONTACT
+========================= */
+
+/* базовый вид для ссылок-кнопок и submit-кнопок на этих страницах */
+.profile-page a.btn,
+.profile-page button.btn,
+.profile-page input[type="submit"].btn,
+.contact-page a.btn,
+.contact-page button.btn,
+.contact-page input[type="submit"].btn,
+.profile-page-hero .btn,
+.contact-page-hero .btn,
+.profile-main-card .btn,
+.profile-sidebar-card .btn,
+.profile-edit-card .btn,
+.profile-orders-card .btn,
+.contact-info-card .btn,
+.contact-form-card .btn,
+.contact-location-shell .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff7a18, #ff3d77);
+  color: #fff !important;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(255, 90, 60, 0.22);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
+}
+
+.profile-page a.btn:hover,
+.profile-page button.btn:hover,
+.profile-page input[type="submit"].btn:hover,
+.contact-page a.btn:hover,
+.contact-page button.btn:hover,
+.contact-page input[type="submit"].btn:hover,
+.profile-page-hero .btn:hover,
+.contact-page-hero .btn:hover,
+.profile-main-card .btn:hover,
+.profile-sidebar-card .btn:hover,
+.profile-edit-card .btn:hover,
+.profile-orders-card .btn:hover,
+.contact-info-card .btn:hover,
+.contact-form-card .btn:hover,
+.contact-location-shell .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(255, 90, 60, 0.28);
+  opacity: 1;
+}
+
+/* outline-кнопки */
+.profile-page a.btn-outline,
+.profile-page button.btn-outline,
+.contact-page a.btn-outline,
+.contact-page button.btn-outline,
+.profile-page-hero .btn-outline,
+.contact-page-hero .btn-outline,
+.profile-main-card .btn-outline,
+.profile-sidebar-card .btn-outline,
+.profile-edit-card .btn-outline,
+.profile-orders-card .btn-outline,
+.contact-info-card .btn-outline,
+.contact-form-card .btn-outline,
+.contact-location-shell .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1.5px solid #ff4f7a;
+  background: rgba(255, 255, 255, 0.78);
+  color: #ff4f7a !important;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.profile-page a.btn-outline:hover,
+.profile-page button.btn-outline:hover,
+.contact-page a.btn-outline:hover,
+.contact-page button.btn-outline:hover,
+.profile-page-hero .btn-outline:hover,
+.contact-page-hero .btn-outline:hover,
+.profile-main-card .btn-outline:hover,
+.profile-sidebar-card .btn-outline:hover,
+.profile-edit-card .btn-outline:hover,
+.profile-orders-card .btn-outline:hover,
+.contact-info-card .btn-outline:hover,
+.contact-form-card .btn-outline:hover,
+.contact-location-shell .btn-outline:hover {
+  background: linear-gradient(135deg, #ff7a18, #ff3d77);
+  color: #fff !important;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(255, 90, 60, 0.24);
+}
+
+/* submit в формах, если без класса */
+.contact-form-card button,
+.contact-form-card input[type="submit"],
+.profile-edit-card button,
+.profile-edit-card input[type="submit"],
+.auth-panel-card button,
+.auth-panel-card input[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff7a18, #ff3d77);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(255, 90, 60, 0.22);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.contact-form-card button:hover,
+.contact-form-card input[type="submit"]:hover,
+.profile-edit-card button:hover,
+.profile-edit-card input[type="submit"]:hover,
+.auth-panel-card button:hover,
+.auth-panel-card input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(255, 90, 60, 0.28);
+}
+
+/* выравнивание групп кнопок */
+.hero-actions,
+.profile-quick-links,
+.review-form-actions,
+.cart-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .profile-page a.btn,
+  .profile-page button.btn,
+  .contact-page a.btn,
+  .contact-page button.btn,
+  .profile-page a.btn-outline,
+  .profile-page button.btn-outline,
+  .contact-page a.btn-outline,
+  .contact-page button.btn-outline,
+  .contact-form-card button,
+  .contact-form-card input[type="submit"],
+  .profile-edit-card button,
+  .profile-edit-card input[type="submit"] {
+    width: 100%;
+  }
+}
