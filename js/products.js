@@ -663,7 +663,7 @@ const productImageMap = {
     files: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp", "7.webp", "8.webp", "9.webp"]
   },
   11: {
-    folder: "Видеокарты/NVIDIA RTX 4080 SUPER",
+    folder: "Видеокарты/AMD Radeon RX 7900 GRE",
     files: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp", "7.webp", "8.webp", "9.webp"]
   },
   12: {
