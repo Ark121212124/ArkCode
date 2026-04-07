@@ -2,295 +2,291 @@
 <html lang="ru">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArkadyCode</title>
 
-<title>ArkadyCode</title>
+  <link rel="stylesheet" href="css/style.css">
 
-<link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script src="js/auth.js" defer></script>
-<script src="js/cart.js" defer></script>
-
+  <script src="js/products.js"></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/cart.js" defer></script>
 </head>
 
 <body data-redirect-to-shop-on-add="true">
 
-
-<!-- VIDEO BACKGROUND -->
-
-<div class="video-bg">
-  <video class="bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="./video/bg.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео.
-  </video>
-</div>
-
-
-
-<!-- HEADER -->
-
-<header>
-
-<div class="logo">
-ArkadyCode
-</div>
-
-<nav>
-
-<a href="index.html">Главная</a>
-<a href="articles.html">Статьи</a>
-<a id="shopLink" class="js-shop-link" href="login.html?redirect=shop.html">Магазин</a>
-<a href="portfolio.html">Портфолио</a>
-<a href="contact.html">Контакты</a>
-<a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Вход</a>
-
-</nav>
-
-</header>
-
-
-
-<!-- HERO -->
-
-<section class="hero reveal">
-
-<h1>ArkadyCode</h1>
-
-<p>
-Разработка современных сайтов и интернет-магазинов
-</p>
-
-<div class="hero-buttons">
-
-<a href="login.html?redirect=shop.html" class="btn js-shop-link">
-Перейти в магазин
-</a>
-
-<a href="portfolio.html" class="btn-outline">
-Мои проекты
-</a>
-
-</div>
-
-</section>
-
-
-
-<!-- ABOUT -->
-
-<section class="container reveal">
-
-<h2>О разработчике</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<img src="https://cdn-icons-png.flaticon.com/512/919/919827.png">
-
-<h3>Frontend разработка</h3>
-
-<p>
-Создание современных сайтов и веб-приложений
-</p>
-
-</div>
-
-
-<div class="card">
-
-<img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png">
-
-<h3>Интернет-магазины</h3>
-
-<p>
-Магазины с корзиной и системой оплаты
-</p>
-
-</div>
-
-
-<div class="card">
-
-<img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
-
-<h3>UI / UX дизайн</h3>
-
-<p>
-Интерфейсы уровня Apple
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- PRODUCTS -->
-
-<section class="container reveal">
-
-<h2>Популярные товары</h2>
-
-<div class="products">
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7">
-
-<h3>Intel Core i7-13700K</h3>
-
-<p class="price">399 $</p>
-
-<button onclick='addToCart({id:"1",name:"Intel Core i7-13700K",price:399,image:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7"})'>
-В корзину
-</button>
-
-</div>
-
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1591488320449-011701bb6704">
-
-<h3>NVIDIA RTX 4070</h3>
-
-<p class="price">699 $</p>
-
-<button onclick='addToCart({id:"3",name:"NVIDIA RTX 4070",price:699,image:"https://images.unsplash.com/photo-1591488320449-011701bb6704"})'>
-В корзину
-</button>
-
-</div>
-
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f">
-
-<h3>Kingston Fury 16GB DDR4</h3>
-
-<p class="price">79 $</p>
-
-<button onclick='addToCart({id:"6",name:"Kingston Fury 16GB DDR4",price:79,image:"https://images.unsplash.com/photo-1518779578993-ec3579fee39f"})'>
-В корзину
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- STATS -->
-
-<section class="container reveal">
-
-<h2>Статистика сайта</h2>
-
-<div class="stats">
-
-<div class="chart-card">
-<canvas id="chartProducts"></canvas>
-<p>Товаров</p>
-</div>
-
-<div class="chart-card">
-<canvas id="chartUsers"></canvas>
-<p>Пользователей</p>
-</div>
-
-<div class="chart-card">
-<canvas id="chartProjects"></canvas>
-<p>Проектов</p>
-</div>
-
-<div class="chart-card">
-<canvas id="chartRating"></canvas>
-<p>Рейтинг</p>
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- CONTACT -->
-
-<section class="container reveal">
-
-<h2>Связаться со мной</h2>
-
-<div class="contact-grid">
-
-<div class="contact-card">
-<h3>Email</h3>
-<a href="mailto:Arktiko12@gmail.com">Arktiko12@gmail.com</a>
-</div>
-
-<div class="contact-card">
-<h3>GitHub</h3>
-<a href="https://github.com/ArkBat" target="_blank">github.com/ArkBat</a>
-</div>
-
-<div class="contact-card">
-<h3>Telegram</h3>
-<a href="https://t.me/ArkBat10" target="_blank">@ArkBat10</a>
-</div>
-
-</div>
-
-</section>
-
-
-
-<footer>
-
-ArkadyCode © 2026
-
-</footer>
-
-
-
-<script src="js/charts.js"></script>
-
-
-<script>
-
-/* SCROLL ANIMATION */
-
-function reveal(){
-
-let reveals=document.querySelectorAll(".reveal")
-
-reveals.forEach(el=>{
-
-let windowHeight=window.innerHeight
-let elementTop=el.getBoundingClientRect().top
-
-if(elementTop < windowHeight-120){
-
-el.classList.add("active")
-
-}
-
-})
-
-}
-
-window.addEventListener("scroll",reveal)
-
-</script>
-
+  <!-- VIDEO BACKGROUND -->
+  <div class="video-bg">
+    <video class="bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="./video/bg.mp4" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      ArkadyCode
+    </div>
+
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="articles.html">Статьи</a>
+      <a id="shopLink" class="js-shop-link" href="login.html?redirect=shop.html">Магазин</a>
+      <a href="portfolio.html">Портфолио</a>
+      <a href="contact.html">Контакты</a>
+      <a id="profileLink" class="js-profile-link" href="login.html?redirect=profile.html">Вход</a>
+
+      <a class="cart-icon" href="javascript:void(0)" onclick="openCart()">
+        🛒 <span id="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero reveal">
+    <h1>ArkadyCode</h1>
+
+    <p>
+      Разработка современных сайтов и интернет-магазинов
+    </p>
+
+    <div class="hero-buttons">
+      <a href="login.html?redirect=shop.html" class="btn js-shop-link">
+        Перейти в магазин
+      </a>
+
+      <a href="portfolio.html" class="btn-outline">
+        Мои проекты
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="container reveal">
+    <h2>О разработчике</h2>
+
+    <div class="cards">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/919/919827.png" alt="Frontend">
+        <h3>Frontend разработка</h3>
+        <p>
+          Создание современных сайтов и веб-приложений
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Магазины">
+        <h3>Интернет-магазины</h3>
+        <p>
+          Магазины с корзиной и системой оплаты
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" alt="UI UX">
+        <h3>UI / UX дизайн</h3>
+        <p>
+          Интерфейсы уровня Apple
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="container reveal">
+    <h2>Популярные товары</h2>
+
+    <div class="featured-products-box">
+      <div class="products" id="featured-products"></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="container reveal">
+    <h2>Статистика сайта</h2>
+
+    <div class="stats">
+      <div class="chart-card">
+        <canvas id="chartProducts"></canvas>
+        <p>Товаров</p>
+      </div>
+
+      <div class="chart-card">
+        <canvas id="chartUsers"></canvas>
+        <p>Пользователей</p>
+      </div>
+
+      <div class="chart-card">
+        <canvas id="chartProjects"></canvas>
+        <p>Проектов</p>
+      </div>
+
+      <div class="chart-card">
+        <canvas id="chartRating"></canvas>
+        <p>Рейтинг</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="container reveal">
+    <h2>Связаться со мной</h2>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Email</h3>
+        <a href="mailto:Arktiko12@gmail.com">Arktiko12@gmail.com</a>
+      </div>
+
+      <div class="contact-card">
+        <h3>GitHub</h3>
+        <a href="https://github.com/ArkBat" target="_blank">github.com/ArkBat</a>
+      </div>
+
+      <div class="contact-card">
+        <h3>Telegram</h3>
+        <a href="https://t.me/ArkBat10" target="_blank">@ArkBat10</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    ArkadyCode © 2026
+  </footer>
+
+  <script src="js/charts.js"></script>
+
+  <script>
+    function reveal() {
+      const reveals = document.querySelectorAll(".reveal");
+
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 120) {
+          el.classList.add("active");
+        }
+      });
+    }
+
+    function escapeHtml(str = "") {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function formatPrice(value) {
+      const amount = Number(value) || 0;
+      return `${amount.toLocaleString("ru-RU")} ₽`;
+    }
+
+    function getProductImage(product) {
+      if (Array.isArray(product.images) && product.images.length) {
+        return product.images[0];
+      }
+
+      if (product.image) {
+        return product.image;
+      }
+
+      return "";
+    }
+
+    function getCategoryLabel(category) {
+      if (window.categoryLabels && window.categoryLabels[category]) {
+        return window.categoryLabels[category];
+      }
+
+      return category || "Товар";
+    }
+
+    function getFeaturedProducts() {
+      const items = Array.isArray(window.products) ? [...window.products] : [];
+
+      return items
+        .sort((a, b) => {
+          const ratingDiff = (Number(b.rating) || 0) - (Number(a.rating) || 0);
+          if (ratingDiff !== 0) return ratingDiff;
+
+          const stockDiff = (Number(b.stock) || 0) - (Number(a.stock) || 0);
+          if (stockDiff !== 0) return stockDiff;
+
+          return (Number(a.price) || 0) - (Number(b.price) || 0);
+        })
+        .slice(0, 3);
+    }
+
+    function openProductPage(productId) {
+      window.location.href = `product.html?id=${productId}`;
+    }
+
+    function renderFeaturedProducts() {
+      const container = document.getElementById("featured-products");
+      if (!container) return;
+
+      const featured = getFeaturedProducts();
+
+      if (!featured.length) {
+        container.innerHTML = `
+          <div class="product-empty">
+            <h3>Товары пока не загружены</h3>
+            <p>Проверь products.js и обнови страницу.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = featured.map(product => {
+        const img = getProductImage(product);
+
+        return `
+          <div class="product featured-product-card">
+            <a href="product.html?id=${product.id}" class="product-link">
+              <div class="product-image-wrap">
+                <img src="${escapeHtml(img)}" alt="${escapeHtml(product.name)}">
+              </div>
+
+              <div class="product-category">
+                ${escapeHtml(getCategoryLabel(product.category))}
+              </div>
+
+              <h3>${escapeHtml(product.name)}</h3>
+            </a>
+
+            <div class="product-meta">
+              <div class="rating">${"★".repeat(Math.round(Number(product.rating) || 0)) || "Без рейтинга"}</div>
+              <div class="product-stock">${(Number(product.stock) || 0) > 0 ? "В наличии" : "Нет в наличии"}</div>
+            </div>
+
+            <p class="price">${formatPrice(product.price)}</p>
+
+            <button type="button" onclick="openProductPage(${product.id})">
+              К товару
+            </button>
+          </div>
+        `;
+      }).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderFeaturedProducts();
+      reveal();
+
+      if (typeof updateCartCount === "function") {
+        updateCartCount();
+      }
+    });
+
+    window.addEventListener("scroll", reveal);
+  </script>
 
 </body>
 </html>
