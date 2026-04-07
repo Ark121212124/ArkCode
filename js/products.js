@@ -55,13 +55,13 @@ const defaultProducts = [
       imgPath("images/Intel Core i7-13700K BOX/4.jpg")
     ],
     rating: 5,
-    description: "Мощный процессор Intel Core i7 13-го поколения для игр, разработки и работы с графикой.",
+    description: "Мощный процессор Intel Core i7 13-го поколения для игр, разработки, стриминга и работы с графикой.",
     specs: [
-      "16 ядер / 24 потока",
-      "Частота до 5.4 GHz",
-      "Сокет LGA1700",
-      "Поддержка DDR5",
-      "TDP 125W"
+      "Ядра / потоки: 16 / 24",
+      "Частота: до 5.4 GHz",
+      "Сокет: LGA1700",
+      "Память: DDR5",
+      "TDP: 125W"
     ]
   },
   {
@@ -77,13 +77,13 @@ const defaultProducts = [
       imgPath("images/Процессор AMD Ryzen 9 7900X OEM/2.jpg")
     ],
     rating: 5,
-    description: "Флагманский процессор AMD Ryzen для высокопроизводительных рабочих станций.",
+    description: "Флагманский процессор AMD Ryzen для производительных игровых систем и рабочих станций.",
     specs: [
-      "12 ядер / 24 потока",
-      "Частота до 5.6 GHz",
-      "Сокет AM5",
-      "Поддержка DDR5",
-      "PCIe 5.0"
+      "Ядра / потоки: 12 / 24",
+      "Частота: до 5.6 GHz",
+      "Сокет: AM5",
+      "Память: DDR5",
+      "Интерфейс: PCIe 5.0"
     ]
   },
   {
@@ -99,13 +99,13 @@ const defaultProducts = [
       imgPath("images/Intel Core i7-13700K BOX/2.jpg")
     ],
     rating: 5,
-    description: "Отличный игровой процессор Intel для современных сборок.",
+    description: "Один из лучших процессоров Intel для игровых сборок и универсального домашнего ПК.",
     specs: [
-      "14 ядер / 20 потоков",
-      "Частота до 5.1 GHz",
-      "Сокет LGA1700",
-      "DDR4 / DDR5",
-      "Без встроенной графики"
+      "Ядра / потоки: 14 / 20",
+      "Частота: до 5.1 GHz",
+      "Сокет: LGA1700",
+      "Память: DDR4 / DDR5",
+      "Встроенная графика: отсутствует"
     ]
   },
   {
@@ -121,13 +121,13 @@ const defaultProducts = [
       imgPath("images/Процессор AMD Ryzen 9 7900X OEM/2.jpg")
     ],
     rating: 5,
-    description: "Быстрый 8-ядерный процессор AMD Ryzen для игр и работы.",
+    description: "Быстрый 8-ядерный процессор AMD Ryzen для игр, монтажа и многозадачной работы.",
     specs: [
-      "8 ядер / 16 потоков",
-      "Частота до 5.4 GHz",
-      "Сокет AM5",
-      "Поддержка DDR5",
-      "PCIe 5.0"
+      "Ядра / потоки: 8 / 16",
+      "Частота: до 5.4 GHz",
+      "Сокет: AM5",
+      "Память: DDR5",
+      "Интерфейс: PCIe 5.0"
     ]
   },
   {
@@ -144,13 +144,13 @@ const defaultProducts = [
       imgPath("images/Intel Core i7-13700K BOX/4.jpg")
     ],
     rating: 5,
-    description: "Топовый процессор Intel для тяжёлых задач и мощных игровых ПК.",
+    description: "Топовый процессор Intel для тяжёлых задач, мощных игровых ПК и профессиональной работы.",
     specs: [
-      "24 ядра / 32 потока",
-      "Частота до 5.8 GHz",
-      "Сокет LGA1700",
-      "Поддержка DDR5",
-      "Высокая производительность"
+      "Ядра / потоки: 24 / 32",
+      "Частота: до 5.8 GHz",
+      "Сокет: LGA1700",
+      "Память: DDR5",
+      "Класс: высокая производительность"
     ]
   },
   {
@@ -166,13 +166,13 @@ const defaultProducts = [
       imgPath("images/Процессор AMD Ryzen 9 7900X OEM/2.jpg")
     ],
     rating: 4,
-    description: "Отличный процессор AMD для игровых ПК среднего и высокого уровня.",
+    description: "Отличный процессор AMD для игрового ПК среднего и высокого уровня с хорошим запасом на будущее.",
     specs: [
-      "6 ядер / 12 потоков",
-      "Частота до 5.3 GHz",
-      "Сокет AM5",
-      "DDR5",
-      "Энергоэффективность"
+      "Ядра / потоки: 6 / 12",
+      "Частота: до 5.3 GHz",
+      "Сокет: AM5",
+      "Память: DDR5",
+      "Особенность: энергоэффективность"
     ]
   },
 
@@ -199,13 +199,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта RTX 4070/9.jpg")
     ],
     rating: 5,
-    description: "Современная видеокарта NVIDIA RTX 4070 с поддержкой Ray Tracing и DLSS 3.",
+    description: "Современная видеокарта NVIDIA RTX 4070 с поддержкой Ray Tracing и DLSS 3 для игр в 1440p и 4K.",
     specs: [
-      "12GB GDDR6X",
-      "Ray Tracing",
-      "DLSS 3",
-      "PCIe 4.0",
-      "Поддержка 4K"
+      "Видеопамять: 12GB GDDR6X",
+      "Технологии: Ray Tracing",
+      "Апскейлинг: DLSS 3",
+      "Интерфейс: PCIe 4.0",
+      "Разрешение: поддержка 4K"
     ]
   },
   {
@@ -227,13 +227,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта AMD Radeon RX 7800/8.jpg")
     ],
     rating: 4,
-    description: "Высокопроизводительная видеокарта AMD Radeon для игр в 1440p и 4K.",
+    description: "Высокопроизводительная видеокарта AMD Radeon для современных игр в 1440p и 4K.",
     specs: [
-      "16GB GDDR6",
-      "RDNA 3",
-      "PCIe 4.0",
-      "Ray Tracing",
-      "HDMI 2.1"
+      "Видеопамять: 16GB GDDR6",
+      "Архитектура: RDNA 3",
+      "Интерфейс: PCIe 4.0",
+      "Технологии: Ray Tracing",
+      "Видеоразъём: HDMI 2.1"
     ]
   },
   {
@@ -250,13 +250,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта RTX 4070/3.jpg")
     ],
     rating: 4,
-    description: "Хорошая видеокарта для Full HD и 1440p-гейминга.",
+    description: "Хорошая видеокарта для Full HD и 1440p-гейминга с поддержкой современных технологий NVIDIA.",
     specs: [
-      "8GB GDDR6",
-      "DLSS 3",
-      "Ray Tracing",
-      "PCIe 4.0",
-      "Низкое энергопотребление"
+      "Видеопамять: 8GB GDDR6",
+      "Апскейлинг: DLSS 3",
+      "Технологии: Ray Tracing",
+      "Интерфейс: PCIe 4.0",
+      "Особенность: низкое энергопотребление"
     ]
   },
   {
@@ -273,13 +273,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта AMD Radeon RX 7800/3.jpg")
     ],
     rating: 4,
-    description: "Мощная видеокарта AMD для игр в 1440p и высоких настройках.",
+    description: "Мощная видеокарта AMD для игр в 1440p на высоких настройках и хорошей графике.",
     specs: [
-      "12GB GDDR6",
-      "RDNA 3",
-      "PCIe 4.0",
-      "FidelityFX",
-      "DisplayPort 2.1"
+      "Видеопамять: 12GB GDDR6",
+      "Архитектура: RDNA 3",
+      "Интерфейс: PCIe 4.0",
+      "Технологии: FidelityFX",
+      "Видеоразъём: DisplayPort 2.1"
     ]
   },
   {
@@ -296,13 +296,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта RTX 4070/5.jpg")
     ],
     rating: 5,
-    description: "Флагманская видеокарта для 4K-гейминга и профессиональных задач.",
+    description: "Флагманская видеокарта для 4K-гейминга, 3D-рендера и профессиональных задач.",
     specs: [
-      "16GB GDDR6X",
-      "DLSS 3.5",
-      "Ray Tracing",
-      "PCIe 4.0",
-      "Высокая производительность"
+      "Видеопамять: 16GB GDDR6X",
+      "Апскейлинг: DLSS 3.5",
+      "Технологии: Ray Tracing",
+      "Интерфейс: PCIe 4.0",
+      "Класс: высокая производительность"
     ]
   },
   {
@@ -319,13 +319,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта AMD Radeon RX 7800/6.jpg")
     ],
     rating: 4,
-    description: "Сильная видеокарта AMD для тяжёлых игр и графических задач.",
+    description: "Сильная видеокарта AMD для тяжёлых игр, высоких настроек графики и работы с контентом.",
     specs: [
-      "16GB GDDR6",
-      "RDNA 3",
-      "PCIe 4.0",
-      "Ray Tracing",
-      "Поддержка 4K"
+      "Видеопамять: 16GB GDDR6",
+      "Архитектура: RDNA 3",
+      "Интерфейс: PCIe 4.0",
+      "Технологии: Ray Tracing",
+      "Разрешение: поддержка 4K"
     ]
   },
 
@@ -348,13 +348,13 @@ const defaultProducts = [
       imgPath("images/Оперативная память Corsair/5.jpg")
     ],
     rating: 4,
-    description: "Высокоскоростная оперативная память DDR5 для современных ПК.",
+    description: "Высокоскоростная оперативная память DDR5 для современных игровых и рабочих ПК.",
     specs: [
-      "32GB (2x16GB)",
-      "DDR5",
-      "5600MHz",
-      "RGB подсветка",
-      "Низкие тайминги"
+      "Объём: 32GB (2x16GB)",
+      "Тип памяти: DDR5",
+      "Частота: 5600MHz",
+      "Подсветка: RGB",
+      "Особенность: низкие тайминги"
     ]
   },
   {
@@ -372,13 +372,13 @@ const defaultProducts = [
       imgPath("images/Оперативная память Kingston/4.jpg")
     ],
     rating: 4,
-    description: "Надежная оперативная память Kingston для игровых ПК.",
+    description: "Надёжная оперативная память Kingston для игровых и домашних систем.",
     specs: [
-      "16GB",
-      "DDR4",
-      "3200MHz",
-      "XMP профиль",
-      "Низкое энергопотребление"
+      "Объём: 16GB",
+      "Тип памяти: DDR4",
+      "Частота: 3200MHz",
+      "Профиль: XMP",
+      "Особенность: низкое энергопотребление"
     ]
   },
   {
@@ -395,13 +395,13 @@ const defaultProducts = [
       imgPath("images/Оперативная память Corsair/3.jpg")
     ],
     rating: 5,
-    description: "Премиальная DDR5 память большого объёма для мощных ПК.",
+    description: "Премиальная DDR5 память большого объёма для мощных рабочих станций и топовых сборок.",
     specs: [
-      "64GB (2x32GB)",
-      "DDR5",
-      "6000MHz",
-      "RGB подсветка",
-      "Премиальные радиаторы"
+      "Объём: 64GB (2x32GB)",
+      "Тип памяти: DDR5",
+      "Частота: 6000MHz",
+      "Подсветка: RGB",
+      "Особенность: премиальные радиаторы"
     ]
   },
   {
@@ -418,13 +418,13 @@ const defaultProducts = [
       imgPath("images/Оперативная память Kingston/3.jpg")
     ],
     rating: 4,
-    description: "Современная DDR5 память для игровых и рабочих сборок.",
+    description: "Современная DDR5 память для игровых и рабочих сборок с хорошим запасом по скорости.",
     specs: [
-      "32GB (2x16GB)",
-      "DDR5",
-      "5600MHz",
-      "XMP",
-      "Надёжное охлаждение"
+      "Объём: 32GB (2x16GB)",
+      "Тип памяти: DDR5",
+      "Частота: 5600MHz",
+      "Профиль: XMP",
+      "Охлаждение: надёжные радиаторы"
     ]
   },
   {
@@ -440,13 +440,13 @@ const defaultProducts = [
       imgPath("images/Оперативная память Corsair/4.jpg")
     ],
     rating: 4,
-    description: "Доступная DDR4 память для повседневных и игровых ПК.",
+    description: "Доступная DDR4 память для повседневных задач, игр и рабочих приложений.",
     specs: [
-      "16GB (2x8GB)",
-      "DDR4",
-      "3200MHz",
-      "XMP",
-      "Низкие тайминги"
+      "Объём: 16GB (2x8GB)",
+      "Тип памяти: DDR4",
+      "Частота: 3200MHz",
+      "Профиль: XMP",
+      "Особенность: низкие тайминги"
     ]
   },
   {
@@ -462,13 +462,13 @@ const defaultProducts = [
       imgPath("images/Оперативная память Kingston/4.jpg")
     ],
     rating: 4,
-    description: "Надежная память большого объёма для многозадачности и игр.",
+    description: "Надёжная память большого объёма для многозадачности, игр и рабочих программ.",
     specs: [
-      "32GB (2x16GB)",
-      "DDR4",
-      "3600MHz",
-      "XMP профиль",
-      "Радиаторы охлаждения"
+      "Объём: 32GB (2x16GB)",
+      "Тип памяти: DDR4",
+      "Частота: 3600MHz",
+      "Профиль: XMP",
+      "Охлаждение: радиаторы"
     ]
   },
 
@@ -488,13 +488,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта RTX 4070/2.jpg")
     ],
     rating: 5,
-    description: "Премиальная материнская плата ASUS для мощных Intel-сборок.",
+    description: "Премиальная материнская плата ASUS для мощных Intel-сборок и современных игровых систем.",
     specs: [
-      "Сокет LGA1700",
-      "Чипсет Z790",
-      "DDR5",
-      "Wi-Fi 6E",
-      "PCIe 5.0"
+      "Сокет: LGA1700",
+      "Чипсет: Z790",
+      "Память: DDR5",
+      "Беспроводная связь: Wi-Fi 6E",
+      "Интерфейс: PCIe 5.0"
     ]
   },
   {
@@ -510,13 +510,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта AMD Radeon RX 7800/2.jpg")
     ],
     rating: 5,
-    description: "Популярная материнская плата MSI для AMD Ryzen AM5.",
+    description: "Популярная материнская плата MSI для AMD Ryzen AM5 с хорошим набором функций.",
     specs: [
-      "Сокет AM5",
-      "Чипсет B650",
-      "DDR5",
-      "Wi-Fi",
-      "PCIe 4.0"
+      "Сокет: AM5",
+      "Чипсет: B650",
+      "Память: DDR5",
+      "Беспроводная связь: Wi-Fi",
+      "Интерфейс: PCIe 4.0"
     ]
   },
   {
@@ -532,13 +532,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта RTX 4070/3.jpg")
     ],
     rating: 4,
-    description: "Надежная материнская плата для Intel с хорошим набором функций.",
+    description: "Надёжная материнская плата для Intel с хорошим охлаждением и современными интерфейсами.",
     specs: [
-      "Сокет LGA1700",
-      "B760",
-      "DDR5",
-      "Wi-Fi 6",
-      "M.2 NVMe"
+      "Сокет: LGA1700",
+      "Чипсет: B760",
+      "Память: DDR5",
+      "Беспроводная связь: Wi-Fi 6",
+      "Накопители: M.2 NVMe"
     ]
   },
   {
@@ -554,13 +554,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта AMD Radeon RX 7800/4.jpg")
     ],
     rating: 4,
-    description: "Практичная материнская плата для AMD Ryzen AM4.",
+    description: "Практичная материнская плата для AMD Ryzen AM4 и сборок среднего класса.",
     specs: [
-      "Сокет AM4",
-      "B550",
-      "DDR4",
-      "Micro-ATX",
-      "M.2 PCIe"
+      "Сокет: AM4",
+      "Чипсет: B550",
+      "Память: DDR4",
+      "Форм-фактор: Micro-ATX",
+      "Накопители: M.2 PCIe"
     ]
   },
 
@@ -580,13 +580,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта RTX 4070/2.jpg")
     ],
     rating: 5,
-    description: "Быстрый NVMe SSD накопитель для игр, системы и работы.",
+    description: "Быстрый NVMe SSD накопитель для игр, системы, рабочих файлов и монтажа.",
     specs: [
-      "1TB",
-      "NVMe PCIe 4.0",
-      "До 7000 MB/s",
-      "M.2 2280",
-      "Высокая надёжность"
+      "Объём: 1TB",
+      "Интерфейс: NVMe PCIe 4.0",
+      "Скорость чтения: до 7000 MB/s",
+      "Формат: M.2 2280",
+      "Особенность: высокая надёжность"
     ]
   },
   {
@@ -602,13 +602,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта RTX 4070/3.jpg")
     ],
     rating: 5,
-    description: "Игровой SSD большого объёма с очень высокой скоростью.",
+    description: "Игровой SSD большого объёма с очень высокой скоростью для тяжёлых проектов и игр.",
     specs: [
-      "2TB",
-      "NVMe PCIe 4.0",
-      "До 7300 MB/s",
-      "M.2",
-      "Для игр и работы"
+      "Объём: 2TB",
+      "Интерфейс: NVMe PCIe 4.0",
+      "Скорость чтения: до 7300 MB/s",
+      "Формат: M.2",
+      "Назначение: игры и работа"
     ]
   },
   {
@@ -624,13 +624,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта RTX 4070/4.jpg")
     ],
     rating: 4,
-    description: "Доступный NVMe SSD для ускорения системы и хранения данных.",
+    description: "Доступный NVMe SSD для ускорения системы, приложений и хранения данных.",
     specs: [
-      "1TB",
-      "NVMe PCIe 4.0",
-      "До 5000 MB/s",
-      "M.2",
-      "Хорошая цена"
+      "Объём: 1TB",
+      "Интерфейс: NVMe PCIe 4.0",
+      "Скорость чтения: до 5000 MB/s",
+      "Формат: M.2",
+      "Преимущество: хорошая цена"
     ]
   },
   {
@@ -646,13 +646,13 @@ const defaultProducts = [
       imgPath("images/Оперативная память Kingston/2.jpg")
     ],
     rating: 4,
-    description: "Компактный и недорогой SSD для системы и базовых задач.",
+    description: "Компактный и недорогой SSD для системы, браузера, документов и повседневных задач.",
     specs: [
-      "500GB",
-      "NVMe PCIe 4.0",
-      "M.2 2280",
-      "Для повседневного ПК",
-      "Низкая цена"
+      "Объём: 500GB",
+      "Интерфейс: NVMe PCIe 4.0",
+      "Формат: M.2 2280",
+      "Назначение: повседневный ПК",
+      "Преимущество: низкая цена"
     ]
   },
 
@@ -672,13 +672,13 @@ const defaultProducts = [
       imgPath("images/Intel Core i7-13700K BOX/2.jpg")
     ],
     rating: 5,
-    description: "Эффективный башенный кулер для мощных процессоров.",
+    description: "Эффективный башенный кулер для мощных процессоров с хорошим балансом шума и температуры.",
     specs: [
-      "Воздушное охлаждение",
-      "Два вентилятора",
-      "Поддержка Intel/AMD",
-      "Низкий шум",
-      "Высокая эффективность"
+      "Тип охлаждения: воздушное",
+      "Вентиляторы: 2 шт.",
+      "Совместимость: Intel / AMD",
+      "Уровень шума: низкий",
+      "Эффективность: высокая"
     ]
   },
   {
@@ -694,13 +694,13 @@ const defaultProducts = [
       imgPath("images/Процессор AMD Ryzen 9 7900X OEM/2.jpg")
     ],
     rating: 5,
-    description: "Жидкостное охлаждение для современных производительных ПК.",
+    description: "Жидкостное охлаждение для современных производительных ПК, игровых и рабочих систем.",
     specs: [
-      "СЖО 240 мм",
-      "RGB подсветка",
-      "Поддержка Intel/AMD",
-      "Тихая работа",
-      "Для мощных CPU"
+      "Тип охлаждения: СЖО 240 мм",
+      "Подсветка: RGB",
+      "Совместимость: Intel / AMD",
+      "Уровень шума: тихая работа",
+      "Назначение: для мощных CPU"
     ]
   },
 
@@ -720,13 +720,13 @@ const defaultProducts = [
       imgPath("images/Оперативная память Corsair/2.jpg")
     ],
     rating: 5,
-    description: "Надежный блок питания с сертификатом 80 Plus Gold.",
+    description: "Надёжный блок питания с высоким КПД для игровых и рабочих систем.",
     specs: [
-      "750W",
-      "80 Plus Gold",
-      "Полностью модульный",
-      "Тихий вентилятор",
-      "Надёжные компоненты"
+      "Мощность: 750W",
+      "Сертификат: 80 Plus Gold",
+      "Кабели: полностью модульный",
+      "Охлаждение: тихий вентилятор",
+      "Компоненты: надёжные"
     ]
   },
   {
@@ -742,13 +742,13 @@ const defaultProducts = [
       imgPath("images/Оперативная память Kingston/2.jpg")
     ],
     rating: 5,
-    description: "Тихий и мощный блок питания для игровых и рабочих систем.",
+    description: "Тихий и мощный блок питания для современных игровых и рабочих сборок.",
     specs: [
-      "850W",
-      "80 Plus Gold",
-      "ATX 3.0",
-      "Модульные кабели",
-      "Тихая работа"
+      "Мощность: 850W",
+      "Сертификат: 80 Plus Gold",
+      "Стандарт: ATX 3.0",
+      "Кабели: модульные",
+      "Особенность: тихая работа"
     ]
   },
 
@@ -768,13 +768,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта RTX 4070/2.jpg")
     ],
     rating: 4,
-    description: "Стильный корпус с хорошей вентиляцией для современной сборки.",
+    description: "Стильный корпус с хорошей вентиляцией для современной игровой или рабочей сборки.",
     specs: [
-      "Mid Tower",
-      "Хороший airflow",
-      "Поддержка ATX",
-      "Стеклянная боковая панель",
-      "Удобный кабель-менеджмент"
+      "Форм-фактор: Mid Tower",
+      "Охлаждение: хороший airflow",
+      "Совместимость: ATX",
+      "Панель: стеклянная боковая",
+      "Сборка: удобный кабель-менеджмент"
     ]
   },
   {
@@ -790,13 +790,13 @@ const defaultProducts = [
       imgPath("images/Видеокарта AMD Radeon RX 7800/2.jpg")
     ],
     rating: 5,
-    description: "Просторный корпус с отличным охлаждением и современным дизайном.",
+    description: "Просторный корпус с отличным охлаждением, современным дизайном и удобной сборкой.",
     specs: [
-      "Mid Tower",
-      "Поддержка больших GPU",
-      "Хорошая продуваемость",
-      "USB-C на панели",
-      "Удобная сборка"
+      "Форм-фактор: Mid Tower",
+      "Совместимость: большие GPU",
+      "Охлаждение: высокая продуваемость",
+      "Передняя панель: USB-C",
+      "Сборка: удобная"
     ]
   }
 ];
@@ -805,18 +805,25 @@ const defaultProducts = [
 НОРМАЛИЗАЦИЯ ТОВАРОВ
 ========================= */
 function normalizeProducts(items) {
-  return items.map(product => ({
-    ...product,
-    category: product.category?.toLowerCase().trim(),
-    brand: product.brand?.trim(),
-    name: product.name?.trim(),
-    image: product.image || "",
-    images: Array.isArray(product.images) ? product.images : [],
-    specs: Array.isArray(product.specs) ? product.specs : [],
-    rating: Number(product.rating) || 0,
-    price: Number(product.price) || 0,
-    stock: Number(product.stock) || 0
-  }));
+  if (!Array.isArray(items)) return [];
+
+  return items
+    .filter(Boolean)
+    .map(product => ({
+      ...product,
+      id: Number(product.id),
+      category: String(product.category || "").toLowerCase().trim(),
+      brand: String(product.brand || "").trim(),
+      name: String(product.name || "").trim(),
+      description: String(product.description || "").trim(),
+      image: product.image || "",
+      images: Array.isArray(product.images) ? product.images : [],
+      specs: Array.isArray(product.specs) ? product.specs : [],
+      rating: Number(product.rating) || 0,
+      price: Number(product.price) || 0,
+      stock: Number(product.stock) || 0
+    }))
+    .filter(product => product.id && product.name);
 }
 
 /* =========================
@@ -865,21 +872,53 @@ function groupProductsByCategory(items) {
 }
 
 /* =========================
+СБРОС ТОВАРОВ ДО ДЕФОЛТНЫХ
+используй вручную в консоли:
+resetProductsStorage()
+========================= */
+function resetProductsStorage() {
+  const preparedProducts = sortProducts(normalizeProducts(defaultProducts));
+  localStorage.setItem("products", JSON.stringify(preparedProducts));
+  location.reload();
+}
+
+/* =========================
 LOCALSTORAGE
 Не перезаписываем товары каждый раз
 ========================= */
-if (!localStorage.getItem("products")) {
-  const preparedProducts = sortProducts(normalizeProducts(defaultProducts));
-  localStorage.setItem("products", JSON.stringify(preparedProducts));
+let storedProducts = [];
+
+try {
+  storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+} catch (error) {
+  storedProducts = [];
 }
 
-let products = JSON.parse(localStorage.getItem("products")) || [];
-products = sortProducts(normalizeProducts(products));
+if (!Array.isArray(storedProducts) || !storedProducts.length) {
+  const preparedProducts = sortProducts(normalizeProducts(defaultProducts));
+  localStorage.setItem("products", JSON.stringify(preparedProducts));
+  storedProducts = preparedProducts;
+}
+
+let products = sortProducts(normalizeProducts(storedProducts));
 
 /* =========================
 СГРУППИРОВАННЫЕ ТОВАРЫ
 ========================= */
 const productsByCategory = groupProductsByCategory(products);
+
+/* =========================
+ЭКСПОРТ В WINDOW
+========================= */
+window.defaultProducts = defaultProducts;
+window.products = products;
+window.productsByCategory = productsByCategory;
+window.categoryOrder = categoryOrder;
+window.categoryLabels = categoryLabels;
+window.normalizeProducts = normalizeProducts;
+window.sortProducts = sortProducts;
+window.groupProductsByCategory = groupProductsByCategory;
+window.resetProductsStorage = resetProductsStorage;
 
 console.log("Все товары:", products);
 console.log("Товары по категориям:", productsByCategory);
