@@ -1566,3 +1566,359 @@ FIX BUTTONS ON PROFILE / CONTACT
     width: 100%;
   }
 }
+/* =========================
+FIX TYPOGRAPHY / FORMS / CHIPS
+FOR SHOP + PROFILE + CONTACT
+========================= */
+
+/* shop hero */
+.shop-hero,
+.shop-page .shop-hero {
+  max-width: 1280px;
+  margin: 0 auto 30px;
+  padding: 24px 8px 0;
+}
+
+.shop-hero h1,
+.shop-page h1 {
+  font-size: 56px;
+  line-height: 1.08;
+  font-weight: 900;
+  color: #101828;
+  margin: 12px 0 10px;
+}
+
+.shop-hero p,
+.shop-page .shop-hero p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.shop-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(125, 92, 255, 0.14), rgba(0, 194, 255, 0.14));
+  border: 1px solid rgba(125, 92, 255, 0.14);
+  color: #4c34c7;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* toolbar */
+.shop-toolbar,
+.shop-panel .shop-toolbar {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.shop-search,
+.shop-sort,
+.shop-toolbar input[type="text"],
+.shop-toolbar input[type="search"],
+.shop-toolbar select {
+  height: 52px;
+  padding: 0 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(70, 70, 90, 0.12);
+  background: rgba(255, 255, 255, 0.88);
+  color: #111;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.shop-search,
+.shop-toolbar input[type="text"],
+.shop-toolbar input[type="search"] {
+  flex: 1 1 320px;
+  min-width: 260px;
+}
+
+.shop-sort,
+.shop-toolbar select {
+  flex: 0 0 240px;
+  cursor: pointer;
+}
+
+.shop-search:focus,
+.shop-sort:focus,
+.shop-toolbar input[type="text"]:focus,
+.shop-toolbar input[type="search"]:focus,
+.shop-toolbar select:focus {
+  border-color: rgba(98, 87, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(98, 87, 255, 0.08);
+}
+
+/* categories */
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.category-btn,
+.categories button,
+.categories a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  color: #1d1d1f;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.22s ease;
+}
+
+.category-btn:hover,
+.categories button:hover,
+.categories a:hover {
+  transform: translateY(-2px);
+  background: #fff;
+}
+
+.category-btn.active,
+.categories button.active,
+.categories a.active {
+  color: #fff;
+  background: linear-gradient(135deg, #6f5cff, #00b7ff);
+  box-shadow: 0 12px 28px rgba(71, 108, 255, 0.28);
+}
+
+/* category section headings */
+.catalog-category-subtitle,
+.shop-page .catalog-category-subtitle,
+.shop-page .category-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.45);
+  margin-bottom: 6px;
+}
+
+.catalog-category-title,
+.shop-page .catalog-category-title,
+.shop-page h2 {
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 900;
+  color: #111;
+  margin: 0;
+}
+
+.catalog-category-count,
+.shop-page .catalog-category-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(111, 92, 255, 0.1);
+  color: #5d47e8;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* profile/contact/info blocks text */
+.profile-page-shell,
+.profile-sidebar-card,
+.profile-main-card,
+.profile-edit-card,
+.profile-orders-card,
+.contact-page-hero-box,
+.contact-info-card,
+.contact-form-card {
+  color: #101828;
+}
+
+.profile-page-shell h1,
+.contact-page-hero-box h1,
+.profile-main-card h2,
+.profile-edit-card h2,
+.profile-orders-card h2,
+.contact-info-card h2,
+.contact-form-card h2 {
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.08;
+  font-weight: 900;
+  color: #101828;
+  margin-bottom: 12px;
+}
+
+.profile-page-shell p,
+.contact-page-hero-box p,
+.profile-main-card p,
+.profile-edit-card p,
+.profile-orders-card p,
+.contact-info-card p,
+.contact-form-card p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #4b5563;
+}
+
+/* info list in profile/contact */
+.profile-data-item,
+.contact-link-card,
+.contact-location-point {
+  color: #111827;
+}
+
+.profile-data-item strong,
+.contact-link-content h3,
+.contact-location-point strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 800;
+  color: #667085;
+  margin-bottom: 6px;
+}
+
+.profile-data-item span,
+.contact-link-content span,
+.contact-location-point span {
+  display: block;
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 700;
+  color: #111827;
+}
+
+.profile-data-item a,
+.contact-link-content a,
+.contact-info-card a {
+  color: #5a45df;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.profile-data-item a:hover,
+.contact-link-content a:hover,
+.contact-info-card a:hover {
+  text-decoration: underline;
+}
+
+/* plain text rows if HTML is simpler than expected */
+.profile-main-card b,
+.profile-main-card strong,
+.profile-sidebar-card b,
+.profile-sidebar-card strong,
+.contact-info-card b,
+.contact-info-card strong {
+  color: #111827;
+  font-weight: 800;
+}
+
+.profile-main-card,
+.profile-sidebar-card,
+.profile-edit-card,
+.profile-orders-card,
+.contact-info-card,
+.contact-form-card {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* forms */
+.profile-edit-card input,
+.profile-edit-card textarea,
+.contact-form-card input,
+.contact-form-card textarea,
+.contact-form-card select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.92);
+  color: #111827;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease;
+  margin-top: 6px;
+}
+
+.profile-edit-card textarea,
+.contact-form-card textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.profile-edit-card input:focus,
+.profile-edit-card textarea:focus,
+.contact-form-card input:focus,
+.contact-form-card textarea:focus,
+.contact-form-card select:focus {
+  border-color: #ff7a18;
+  box-shadow: 0 0 0 4px rgba(255, 122, 24, 0.1);
+}
+
+/* labels */
+.profile-edit-card label,
+.contact-form-card label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+/* generic block spacing if markup is plain */
+.profile-main-card > *,
+.profile-sidebar-card > *,
+.profile-edit-card > *,
+.profile-orders-card > *,
+.contact-info-card > *,
+.contact-form-card > * {
+  margin-bottom: 12px;
+}
+
+.profile-main-card > *:last-child,
+.profile-sidebar-card > *:last-child,
+.profile-edit-card > *:last-child,
+.profile-orders-card > *:last-child,
+.contact-info-card > *:last-child,
+.contact-form-card > *:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .shop-hero h1,
+  .shop-page h1 {
+    font-size: 34px;
+  }
+
+  .catalog-category-title,
+  .shop-page h2 {
+    font-size: 26px;
+  }
+
+  .shop-search,
+  .shop-sort,
+  .shop-toolbar input[type="text"],
+  .shop-toolbar input[type="search"],
+  .shop-toolbar select {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
